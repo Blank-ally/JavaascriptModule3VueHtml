@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>New star</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
@@ -12,7 +12,7 @@
 
     <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Offcanvas navbar</a>
+            <a class="navbar-brand" href="#">Cluster</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -55,7 +55,6 @@
 
 
 <div>
-
     <div class="row">
         <div class="py-5">
             <div class="text-center">
@@ -70,7 +69,7 @@
             <div class="col-md-6 order-sm-1">
                 <div class="col-md-6 float-md-end mb-3 ms-md-3">
                     <img  class="img-fluid img-thumbnail " src="pexels-lum3n-44775-616849.jpg"/>
-                    <div class="input-group mx-3">
+                    <div class="input-group px-3  py-3 ">
                         <label class="input-group-text" for="inputGroupFile01">Upload</label>
                         <input type="file" class="form-control" id="inputGroupFile01">
                     </div>
@@ -81,13 +80,13 @@
                 <form class=" g-3 needs-validation" novalidate>
 
                     <div class="row">
-                        <div class=" col-md-4 my-3">
+                        <div class=" col-md-4 px-4  py-3 px-md-0">
                             <label for="StarName" class="form-label">Star Name</label>
                             <input type="text" class="form-control" id="StarName" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 my-3">
+                        <div class="col-md-4 px-4  py-3 px-md-0">
                             <select class="form-select" aria-label="Default select example">
                                 <option selected disabled>Cluster Name</option>
                                 <option value="1">One</option>
@@ -98,7 +97,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4 my-3">
+                        <div class="col-md-4 px-4  py-3 px-md-0">
                             <select class="form-select" aria-label="Default select example">
                                 <option selected disabled>Classification</option>
                                 <option value="1">One</option>
@@ -109,49 +108,69 @@
                     </div>
 
                     <div class="row">
-                        <div class=" col-md-4 my-3">
+                        <div class=" col-md-4 px-4  py-3 px-md-0">
                             <label for="Qty" class="form-label">Qty</label>
                             <input type="number" class="form-control" min="1" id="Qty" required>
                         </div>
                     </div>
 
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <div class="row">
+                        <div class=" col-md-4 px-4  py-3 px-md-0 ">
+                    <div class="form-floating ">
+                        <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                         <label for="floatingTextarea2">Notes</label>
                     </div>
+                        </div>
+                        </div>
+                    <div class="row">
+                        <div class=" col-md-4 px-4  py-3 px-md-0">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         <label class="form-check-label" for="flexSwitchCheckDefault">Trade</label>
                     </div>
+                        </div>
+                    </div>
 
                     <div class="collapse" id="collapseExample">
-                        <div class="col-md-4 position-relative">
+                        <div class="row">
+                        <div class="col-md-4 px-4  py-3 px-md-0">
                             <label for="TadeQty" class="form-label">Qty to trade</label>
                             <input type="number" class="form-control" id="TadeQty" required>
                         </div>
-                        <div class="col-md-4 position-relative">
+                        </div>
+                        <div class="row">
+                        <div class="col-md-4 px-4  py-3 px-md-0">
                             <select class="form-select" aria-label="Default select example">
                                 <option selected disabled>Trade for</option>
                                 <option value="1">Another Star</option>
                                 <option value="2">Money</option>
                             </select>
                         </div>
-
-                        <div class="col-md-4 position-relative">
+                        </div>
+                        <div class="row">
+                        <div class="col-md-4 px-4  py-3 px-md-0">
                             <label for="ClusterName" class="form-label">Price</label>
                             <input type="text" class="form-control" id="ClusterName" required>
                         </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 px-4  py-3 px-md-0">
                         <select class="form-select" aria-label="Default select example">
                             <option selected>Condition</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <a class="btn btn-success" role="button" aria-disabled="true" href="Cluster.html ">Create</a>
-                        <a class="btn btn-danger" role="button" aria-disabled="true" href="NewStar.html">Cancel</a>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-center">
+                        <div class="row-col-2">
+                        <a class="btn btn-outline-success" role="button" aria-disabled="true" href="Cluster.html ">Create</a>
+
+                            <a class="btn btn-outline-danger" role="button" aria-disabled="true" href="NewStar.html">Cancel</a>
+                        </div>
                     </div>
 
                 </form>
