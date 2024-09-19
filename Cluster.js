@@ -26,15 +26,26 @@ const Cluster = Vue.createApp({
                 Stars:[]
             },
             CLusterList: [
-                {name: 'MilkyWay', public:true, favorite: true, classification: ["Rare","common", "supernova"], star:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" }]},
+                {name: 'MilkyWay', public:true, favorite: true, classification: ["Rare","common", "supernova"],star:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" },
+                        {name:'star2',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" },
+                        {name:'star3',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" },
+                        {name:'star4',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" }]},
+                {name: 'test2', public:true, favorite: true, classification: ["Rare","common", "supernova"], star:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" }]},
+                {name: 'test3', public:true, favorite: true, classification: ["Rare","common", "supernova"], star:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" }]},
+                {name: 'test4', public:true, favorite: true, classification: ["Rare","common", "supernova"], star:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" }]},
                 {name: 'Nova',public:true, favorite: true },
 
             ],
 
             StarList:[
+                {name:'Absolutno',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum", Cluster: 'Milkway' },
+                {name:'star2',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" , Cluster: 'Milkway'},
+                {name:'star3',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum",Cluster: 'Milkway' },
+                {name:'star4',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" ,Cluster: 'Nova' }
 
             ],
-            currentCluster:{}
+            currentCluster:{},
+            currentStar:{}
 
             //two seperater list and filter
         }
@@ -54,6 +65,7 @@ const Cluster = Vue.createApp({
             return this.StarList().filter(function (item){
                 return item.Cluster = 'MilkyWay'
             })
+
         }
 
     },
