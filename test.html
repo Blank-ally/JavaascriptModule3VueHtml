@@ -16,7 +16,7 @@
                 <div class="card" @click="SetCurrentCluster(cluster)">
                     <div class="card-body">
                         <div class="row mx-2">
-                            <div v-for="(star, x) in cluster.stars" class="col col-6">
+                            <div v-for="(star, x) in cluster.Stars" class="col col-6">
                                 <img v-if="x <= 3 ":src="star.photo" class="w-100 h-100"/>
                             </div>
                         </div>

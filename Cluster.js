@@ -7,7 +7,7 @@ const Cluster = Vue.createApp({
                 photo:'',
                 name:'',
                 Cluster:'',
-                Class:'',
+                Classi :'',
                 qty: 0,
                 notes:'',
                 Trade:false
@@ -39,7 +39,7 @@ const Cluster = Vue.createApp({
                 favorite: false,
                 purchased: false,
                 Complete: false,
-                classifications: [],
+                classifications:[],
                 type:'',
                 Stars:[]
             },
@@ -47,14 +47,14 @@ const Cluster = Vue.createApp({
                 name: ''
             },
             CLusterList: [
-                {name: 'MilkyWay', type: 'cards',public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}],stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum" },
-                        {name:'star2',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" },
-                        {name:'star3',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" },
-                        {name:'star4',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" }] ,type: "galaxies"},
-                {name: 'test2',type: 'cards' ,public:true, favorite: true, Complete: false, classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum" }]},
-                {name: 'test3',type: 'cards' ,public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum" }]},
-                {name: 'test4',type: 'cards' ,public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum" }]},
-                {name: 'Nova',type: 'cards',public:true, favorite: true , Complete: false, stars:[]},
+                {name: 'MilkyWay', type: 'cards',public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}],Stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum" },
+                        {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
+                        {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
+                        {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }] ,type: "galaxies"},
+                {name: 'test2',type: 'cards' ,public:true, favorite: true, Complete: false, classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], Stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }]},
+                {name: 'test3',type: 'cards' ,public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], Stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }]},
+                {name: 'test4',type: 'cards' ,public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], Stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }]},
+                {name: 'Nova',type: 'cards',public:true, favorite: true , Complete: false, Stars:[],classifications: []},
 
             ],
 
@@ -79,7 +79,7 @@ const Cluster = Vue.createApp({
                 photo:'',
                 name:'',
                 Cluster:'',
-                Class:'',
+                Classi:'',
                 qty: 0,
                 notes:'',
                 Trade:false
@@ -91,8 +91,6 @@ const Cluster = Vue.createApp({
 
             ]
 
-
-            //two seperater list and filter
         }
     },
 
@@ -108,11 +106,19 @@ const Cluster = Vue.createApp({
             this.currentCluster = cluster;
             window.location.href = 'Cluster.html'
         },
+        SetCurrentStar(star){
+            debugger
+
+            this.currentStar = star;
+            this.setEditStar()
+
+
+        },
         addNewStar() {
             debugger;
             clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
             ind = this.CLusterList.indexOf(clus)
-            this.currentCluster.stars.push(this.NewStar)
+            this.currentCluster.Stars.push(this.NewStar)
             this.CLusterList[ind] = this.currentCluster
             // clear the form
   //todo: refactor to accept multiple aruguments for cluster
@@ -159,29 +165,34 @@ const Cluster = Vue.createApp({
         },
         addEditClassification(name) {
             debugger;
-
             if (name.trim() !== '') {
                 this.classification.name = name
-                this.editCluster.classifications.push(this.classification);
+                this.editCluster.classifications.push(this.classification)
                 this.classification = {name: ''}
             }
-
         },
         deleteCluster(item) {
             // TODO: confirm with user first!
             this.CLusterList.splice(this.CLusterList.indexOf(item), 1);
+            window.location.href = 'Clusters.html'
 
 
         },
         deleteStar(item){
+            debugger
             // TODO: confirm with user first!
-            this.currentCluster.star.splice(this.currentCluster.star.indexOf(item), 1);
+            clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
+            ind = this.CLusterList.indexOf(clus)
+            this.CLusterList[ind].Stars.splice(this.currentCluster.Stars.indexOf(item), 1);
+            this.currentCluster =  this.CLusterList[ind]
+            window.location.href = 'Cluster.html'
 
 
 
         },
         editCurrentCluster() {
             // TODO: confirm with user first!
+            debugger
 
             clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
             ind = this.CLusterList.indexOf(clus)
@@ -194,8 +205,11 @@ const Cluster = Vue.createApp({
             this.CLusterList[ind].classifications = this.editCluster.classifications
             this.CLusterList[ind].type = this.editCluster.type
 
-            //this.CLusterList[this.CLusterList.indexOf(this.currentCluster )].Cluster = item
+            this.CLusterList[ind].Stars.forEach(s => s.Cluster = this.editCluster.name)
 
+            //this.CLusterList[this.CLusterList.indexOf(this.currentCluster )].Cluster = item
+            this.currentCluster =  this.CLusterList[ind]
+            window.location.href = 'Cluster.html';
 
         },
         setEditCluster() {
@@ -205,9 +219,35 @@ const Cluster = Vue.createApp({
 
 
         },
-        editStar(item){
+        setEditStar() {
+            debugger
+            console.log(this.currentCluster)
+            this.editStar = this.currentStar
+            console.log(this.currentCluster)
+            window.location.href = 'EditStar.html'
+
+
+        },
+        editCurrentStar(item){
+            debugger
             // TODO: confirm with user first!
-            this.currentCluster.star.splice(this.currentCluster.star.indexOf(item), 1);
+            clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
+            ind = this.CLusterList.indexOf(clus)
+            star = this.CLusterList[ind].Stars.find(e => e.name === this.currentStar.name)
+            sind = this.CLusterList[ind].Stars.indexOf(star)
+            this.CLusterList[ind].Stars[sind].name = this.editStar.name
+            this.CLusterList[ind].Stars[sind].photo = this.editStar.photo
+            this.CLusterList[ind].Stars[sind].qty = this.editStar.qty
+            this.CLusterList[ind].Stars[sind].Classi = this.editStar.Classi
+            this.CLusterList[ind].Stars[sind].notes = this.editStar.notes
+            this.CLusterList[ind].Stars[sind].Trade = this.editStar.Trade
+            this.CLusterList[ind].Stars[sind].Cluster = this.editStar.Cluster
+
+
+
+            this.currentCluster =  this.CLusterList[ind]
+            window.location.href = 'Cluster.html';
+
 
 
 
@@ -244,9 +284,9 @@ const Cluster = Vue.createApp({
        if(localStorage.getItem('editCluster')){
             this.editCluster = JSON.parse(localStorage.getItem('editCluster'))
         }
-      /*  if(localStorage.getItem('currentCluster')){
-            this.currentCluster = JSON.parse(localStorage.getItem('currentCluster'))
-        }*/
+       if(localStorage.getItem('editStar')){
+            this.editStar = JSON.parse(localStorage.getItem('editStar'))
+        }
     },
 
     // watch:   calls the function if the value changes
@@ -262,7 +302,7 @@ const Cluster = Vue.createApp({
         currentStar:{
             //this.shoppingList // = old list before the list is updated
             handler(){
-                localStorage.setItem('currentCluster',JSON.stringify(this.currentStar))
+                localStorage.setItem('currentStar',JSON.stringify(this.currentStar))
             },
             deep: true,
 
@@ -287,6 +327,14 @@ const Cluster = Vue.createApp({
             //this.shoppingList // = old list before the list is updated
             handler(newList){
                 localStorage.setItem('editCluster',JSON.stringify(this.editCluster))
+            },
+            deep: true,
+
+        },
+        editStar:{
+            //this.shoppingList // = old list before the list is updated
+            handler(newList){
+                localStorage.setItem('editStar',JSON.stringify(this.editStar))
             },
             deep: true,
 

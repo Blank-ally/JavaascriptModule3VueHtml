@@ -10,7 +10,6 @@
 <body>
 <div id="Cluster">
 <header>
-
     <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Cluster <i class="fa-solid fa-meteor"></i></a>
@@ -70,8 +69,12 @@
                     <img  class="img-fluid img-thumbnail h-100 w-100 " v-if="NewStar.photo != null " :src="NewStar.photo"/>
                     <div class="input-group px-3  py-3 ">
                         <label class="input-group-text" for="inputGroupFile01">Upload image</label>
-                        <input type="file" class="form-control" id="inputGroupFile01" v-model="NewStar.photo">
+                        <input type="text" class="form-control" id="inputGroupFile01" v-model="NewStar.photo">
                     </div>
+                  <!--  <div class="input-group px-3  py-3 ">
+                        <label class="input-group-text" for="inputGroupFile01">Upload image</label>
+                        <input type="file" class="form-control" id="inputGroupFile01" v-model="NewStar.photo">
+                    </div>-->
                 </div>
             </div>
 
