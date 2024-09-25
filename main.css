@@ -87,14 +87,36 @@
 .star-field .layer:nth-child(3) {
     animation: sf-fly-by-3 5s linear infinite;
 }
-.boujee-text {
-    --bg-size: 400%;
-    --color-one: hsl(15 90% 55%);
-    --color-two: hsl(40 95% 55%);
-    font-size: clamp(3rem, 25vmin, 8rem);
-    background: linear-gradient(270deg, #ffb500, #ff7200, #ff0000, #ff006a, #3500ff, #5ec2e1) 0 0 / var(--bg-size) 100%;
-    color: transparent;
-    background-clip: text;
+@keyframes textShine {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+.grad{
+
+    font-weight: bold;
+    margin: 5px;
+    background: linear-gradient(
+            to right,
+            #26010B 20%,
+            #BF9775 30%,
+            #8C593B 70%,
+            #73221A 80%,
+            #401212 90%
+
+    );
     -webkit-background-clip: text;
-    animation: move-bg 8s infinite linear;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: textShine 5s ease-in-out infinite alternate;
+}
+#Cluster{
+    background-image: url("pexels-daniel-cid-634838605-17809424.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
