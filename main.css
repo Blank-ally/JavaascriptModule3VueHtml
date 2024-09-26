@@ -115,8 +115,3 @@
     background-size: 500% auto;
     animation: textShine 5s ease-in-out infinite alternate;
 }
-#Cluster{
-    background-image: url("pexels-daniel-cid-634838605-17809424.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
