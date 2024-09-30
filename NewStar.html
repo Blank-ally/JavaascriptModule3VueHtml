@@ -12,7 +12,7 @@
 <header>
     <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="Cluster.html">Cluster <i class="fa-solid fa-meteor grad"></i></a>
+            <a class="navbar-brand" href="Clusters.html">Cluster <i class="fa-solid fa-meteor grad"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -89,11 +89,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4 px-4  py-3 px-md-0">
-                            <select class="form-select" aria-label="Default select example" v-model="NewStar.Cluster">
+                            <label for="StarClusterName" class="form-label">Cluster</label>
+                            <input type="text" class="form-control" id="StarClusterName" required v-model="NewStar.Cluster" :value="currentCluster.name">
+                          <!--  <select class="form-select" aria-label="Default select example" v-model="NewStar.Cluster">
                                 <option selected disabled>Cluster Name</option>
                                 <option v-for="cluster in CLusterList" :value="cluster.name">{{cluster.name}}</option>
 
-                            </select>
+                            </select>-->
                         </div>
                     </div>
 
