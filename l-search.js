@@ -1,7 +1,7 @@
 // Component names should be TitleCase/PascalCase
 // and should be multi-word, but singular in plurality.
 // When used in HTML/templates, they become kabob-case.
-app.component('SampleComponent', {
+Cluster.component('lSearch', {
     // data:    Data created and maintained by this component.
     //          This function is like a constructor. It gets called
     //          separately for each instance of this component

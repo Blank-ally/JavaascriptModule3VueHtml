@@ -77,8 +77,6 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col">
-            </div>
 
             </div>
         </div>
@@ -109,7 +107,7 @@
 
 
 
-        <div class="container m-2 p-5">
+<!--        <div class="container m-2 p-5">
 
             <div class="card text-center">
                 <div class="card-header">
@@ -138,6 +136,8 @@
                 </div>
             </div>
         </div>
+</div>-->
+    <star-list :list="currentCluster.Stars"></star-list>
 </div>
 
 <!-- Modal -->
@@ -168,7 +168,8 @@
 <script src="Main.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="Cluster.js"></script>
-<script src="js/Cluster-components.js"></script>
+<script src="star-list.js"></script>
+<script src="star-item.js"></script>
 <script>
     // start the app after all the other JS has been loaded
     Cluster.mount('#Cluster');

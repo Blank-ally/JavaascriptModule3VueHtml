@@ -101,19 +101,17 @@ const Cluster = Vue.createApp({
         Alert() {
             alert("hiiiiiiiiiiiiiii")
         },
-        SetCurrentCluster(cluster) {
+ /*       SetCurrentCluster(cluster) {
             console.log(cluster)
             this.currentCluster = cluster;
             window.location.href = 'Cluster.html'
-        },
-        SetCurrentStar(star){
+        },*/
+/*        SetCurrentStar(star){
             debugger
 
             this.currentStar = star;
             this.setEditStar()
-
-
-        },
+        },*/
         addNewStar() {
             debugger;
             clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
@@ -218,7 +216,7 @@ const Cluster = Vue.createApp({
             window.location.href = 'EditCluster.html'
 
 
-        },
+        }/*,
         setEditStar() {
             debugger
             console.log(this.currentCluster)
@@ -227,7 +225,7 @@ const Cluster = Vue.createApp({
             window.location.href = 'EditStar.html'
 
 
-        },
+        }*/,
         editCurrentStar(item){
             debugger
             // TODO: confirm with user first!

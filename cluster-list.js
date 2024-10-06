@@ -1,7 +1,7 @@
 // Component names should be TitleCase/PascalCase
 // and should be multi-word, but singular in plurality.
 // When used in HTML/templates, they become kabob-case.
-app.component('clusterList', {
+Cluster.component('clusterList', {
     // data:    Data created and maintained by this component.
     //          This function is like a constructor. It gets called
     //          separately for each instance of this component
@@ -38,18 +38,8 @@ app.component('clusterList', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <div class="col" v-for="(cluster,x) in list">
-                <div class="card h-100 " @click="SetCurrentCluster(cluster)">
-                    <div class="card-body">
-                        <div class="row ">
-                            
-                        </div>
-                    </div>
-                    <div class="m-auto">
-                    <h3>{{cluster.name}}</h3>
-                    </div>
-                </div>
-
-            </div>
+      <div class="col" v-for="(cluster) in list">
+       <cluster-item :cluster="cluster"></cluster-item>
+      </div>
     `,
 });
