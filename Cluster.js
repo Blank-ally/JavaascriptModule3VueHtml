@@ -89,6 +89,9 @@ const Cluster = Vue.createApp({
                 {name:'Food'},
                 {name:'cards'}
 
+            ],
+            pages:[
+                {name:'Clusters', link:'Clusters.html'}
             ]
 
         }
@@ -97,11 +100,7 @@ const Cluster = Vue.createApp({
     // methods: usually "events" triggered by v-on:
     methods: {
 
-
-        Alert() {
-            alert("hiiiiiiiiiiiiiii")
-        },
- /*       SetCurrentCluster(cluster) {
+   /*   SetCurrentCluster(cluster) {
             console.log(cluster)
             this.currentCluster = cluster;
             window.location.href = 'Cluster.html'
@@ -189,7 +188,7 @@ const Cluster = Vue.createApp({
 
         },
         editCurrentCluster() {
-            // TODO: confirm with user first!
+
             debugger
 
             clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)

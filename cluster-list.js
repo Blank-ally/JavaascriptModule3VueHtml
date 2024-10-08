@@ -38,8 +38,9 @@ Cluster.component('clusterList', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <div class="col" v-for="(cluster) in list">
+      <div class="col" v-for="cluster in list">
        <cluster-item :cluster="cluster"></cluster-item>
       </div>
     `,
+
 });

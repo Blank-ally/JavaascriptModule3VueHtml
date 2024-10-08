@@ -6,7 +6,10 @@ Cluster.component('starItem', {
     //          This function is like a constructor. It gets called
     //          separately for each instance of this component
     data: function(){
-        return {}
+        return {
+
+            editStar:{...this.star},currentStar:{...this.star}
+        }
     },
 
     // props:   Data passed into the component via attributes.
@@ -23,21 +26,14 @@ Cluster.component('starItem', {
 
     // methods: Usually "events" triggered by v-on:
     methods: {
-        SetCurrentStar(star){
+        SetCurrentStar(){
             debugger
 
-            this.currentStar = star;
-            this.setEditStar()
-        },
-        setEditStar() {
-            debugger
-            console.log(this.currentCluster)
+            this.currentStar = this.star;
             this.editStar = this.currentStar
-            console.log(this.currentCluster)
             window.location.href = 'EditStar.html'
+        },
 
-
-        }
 
     },
 
@@ -53,8 +49,8 @@ Cluster.component('starItem', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <div class="card my-3 h-100" @click="SetCurrentStar(item)">
-        <img :src="star.photo" class="card-img-top h-100 w-100" >
+      <div class="card my-3 h-100 btn" @click="SetCurrentStar()">
+        <img :src="star.photo" class="card-img-top w-100" >
         <div class="card-body">
           <h5 class="card-title">{{star.name}}</h5>
           <p class="card-text">Qty: {{star.qty}}</p>
@@ -64,4 +60,30 @@ Cluster.component('starItem', {
         </div>
       </div>
     `,
+    mounted: function () {
+// this could also be done in the crated block as well
+        if(localStorage.getItem('editStar')){
+            this.editStar = JSON.parse(localStorage.getItem('editStar'))
+        }
+        if(localStorage.getItem('currentStar')){
+            this.currentStar = JSON.parse(localStorage.getItem('currentStar'))
+        }
+    },
+    watch: {
+        editStar:{
+            //this.shoppingList // = old list before the list is updated
+            handler(){
+                localStorage.setItem('editStar',JSON.stringify(this.editStar))
+            },
+            deep: true,
+
+        },     currentStar:{
+            //this.shoppingList // = old list before the list is updated
+            handler(){
+                localStorage.setItem('currentStar',JSON.stringify(this.currentStar))
+            },
+            deep: true,
+
+        }
+    }
 });

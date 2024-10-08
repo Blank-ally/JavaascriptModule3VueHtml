@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Cluster</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="app.min.css">
 
@@ -13,47 +12,7 @@
 <div id="Cluster">
 <header>
 
-    <nav class="navbar bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="Clusters.html">Cluster <i class="fa-solid fa-meteor grad"></i></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Cluster <i class="fa-solid fa-meteor grad"></i></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </nav>
+<l-nav-list :pages="pages"></l-nav-list>
 
 </header>
 <div class="container">
@@ -104,39 +63,6 @@
 
         </div>
 
-
-
-
-<!--        <div class="container m-2 p-5">
-
-            <div class="card text-center">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                            <a class="btn " href="NewStar.html"><i class="fa-solid fa-circle-plus"></i> New Star</a>
-                        </li>
-                    </ul>
-                </div>
-                   <div class="card-body">
-                    <div class="card-group row-cols-1 row-cols-md-3 ">
-                        <div class="col h-100" v-for="item in currentCluster.Stars">
-                        <div class="card my-3 h-100" @click="SetCurrentStar(item)">
-                            <img :src="item.photo" class="card-img-top h-100 w-100" >
-                            <div class="card-body">
-                                <h5 class="card-title">{{item.name}}</h5>
-                                <p class="card-text">Qty: {{item.qty}}</p>
-                                <p class="card-text">{{item.Classi}}</p>
-                                <p class="card-text">{{item.notes}}</p>
-                                <p class="card-text"><small class="text-body-secondary">{{item.Cluster}}</small></p>
-                            </div>
-                        </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>-->
     <star-list :list="currentCluster.Stars"></star-list>
 </div>
 
@@ -170,6 +96,9 @@
 <script src="Cluster.js"></script>
 <script src="star-list.js"></script>
 <script src="star-item.js"></script>
+<script src="l-nav-list.js"></script>
+<script src="l-nav-item.js"></script>
+
 <script>
     // start the app after all the other JS has been loaded
     Cluster.mount('#Cluster');

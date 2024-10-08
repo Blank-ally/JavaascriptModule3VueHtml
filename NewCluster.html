@@ -12,44 +12,7 @@
 <div id="Cluster">
 <header>
 
-    <nav class="navbar bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="Clusters.html">Cluster <i class="fa-solid fa-meteor grad"></i> </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Cluster <i class="fa-solid fa-meteor"></i></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </nav>
+    <l-nav-list :pages="pages"></l-nav-list>
 </header>
 <div class="container">
 
@@ -70,6 +33,7 @@
 
         <!-- figure out a way to marry these two tabs examples i found on code pen-->
         <div class="row p-2">
+            <label>New Classification</label>
         <div class="col-4">
             <input class="form-control me-2" type="text" placeholder="New Classification" aria-label="NewClassification" v-model="classification.name">
         </div>
@@ -78,6 +42,7 @@
         </div>
         </div>
         <div class="row p-4">
+            <label>Classifications</label>
         <ul class="list-group" >
             <li class="list-group-item" v-for="clas in newCluster.classifications">{{clas.name}}</li>
         </ul>
@@ -95,6 +60,7 @@
         </div>
         </div>
         <div class="col-4 p-4" >
+            <label>Type</label>
        <select class="form-select" aria-label="Default select example" v-model="newCluster.type">
 
             <option v-for="type in clusterTypes" :value="type.name">{{type.name}}</option>  make it defualt to current cluster
@@ -122,7 +88,8 @@
 <script src="Main.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="Cluster.js"></script>
-<script src="js/Cluster-components.js"></script>
+<script src="l-nav-list.js"></script>
+<script src="l-nav-item.js"></script>
 <script>
     // start the app after all the other JS has been loaded
     Cluster.mount('#Cluster');
