@@ -17,64 +17,7 @@
 </head>
 <body>
 <div id="Cluster">
-<!--<header>
 
-
-</header>
-<div class="container">
-
-
-    <form class="row g-3 needs-validation" novalidate @submit.prevent="addNewCluster">
-
-        <div class="col-md-4 position-relative">
-            <label for="ClusterName" class="form-label">Cluster Name</label>
-            <input type="text" class="form-control" id="ClusterName" required v-model="newCluster.name">
-        </div>
-
-        &lt;!&ndash; figure out a way to marry these two tabs examples i found on code pen&ndash;&gt;
-        <div class="row p-2">
-            <label>New Classification</label>
-        <div class="col-4">
-            <input class="form-control me-2" type="text" placeholder="New Classification" aria-label="NewClassification" v-model="classification.name">
-        </div>
-        <div class="col-3">
-            <button class="btn btn-success" type="button" @click="addClassification(classification.name)">Add</button>
-        </div>
-        </div>
-
-        <classification-list :list="newCluster.classifications" ></classification-list>
-
-        <div class="row ms-4">
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="PublicflexSwitchCheckDefault" v-model="newCluster.public">
-            <label class="form-check-label" for="PublicflexSwitchCheckDefault">Public</label>
-        </div>
-        </div>
-        <div class="row ms-4">
-        <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="FavoriteflexSwitchCheckDefault" v-model="newCluster.favorite">
-            <label class="form-check-label" for="FavoriteflexSwitchCheckDefault">Favorite</label>
-        </div>
-        </div>
-        <div class="col-4 p-4" >
-            <label>Type</label>
-       <select class="form-select" aria-label="Default select example" v-model="newCluster.type">
-
-            <option v-for="type in clusterTypes" :value="type.name">{{type.name}}</option>  make it defualt to current cluster
-
-        </select>
-</div>
-
-        <div class="row justify-content-center">
-            <div class="col-3 col-md-1 p-2">
-        <button class="btn btn-primary"  aria-disabled="true" type="submit">Continue</button>
-            </div>
-            <div class="col-3 col-md-1 p-2">
-                <a class="btn btn-danger"  href="Clusters.html">Cancel</a>
-            </div>
-        </div>
-    </form>
-</div>-->
     <q-layout view="hHh lpR fFf">
 
         <q-header elevated >
