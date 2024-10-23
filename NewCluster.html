@@ -17,7 +17,7 @@
 </head>
 <body>
 <div id="Cluster">
-<header>
+<!--<header>
 
 
 </header>
@@ -31,7 +31,7 @@
             <input type="text" class="form-control" id="ClusterName" required v-model="newCluster.name">
         </div>
 
-        <!-- figure out a way to marry these two tabs examples i found on code pen-->
+        &lt;!&ndash; figure out a way to marry these two tabs examples i found on code pen&ndash;&gt;
         <div class="row p-2">
             <label>New Classification</label>
         <div class="col-4">
@@ -74,7 +74,7 @@
             </div>
         </div>
     </form>
-</div>
+</div>-->
     <q-layout view="hHh lpR fFf">
 
         <q-header elevated >
@@ -128,64 +128,38 @@
                     <div>
 
                         <q-input  filled
-                                  v-model=""
                                   label="New Classification"
+                                  v-model="classification.name"
                                   lazy-rules
                                   bg-color="white">
-                            <q-btn round dense flat icon="add" />
+                            <q-btn round dense flat icon="add"@click="addClassification(classification.name)" />
                         </q-input>
                     </div>
 
-
+                    <classification-list :list="newCluster.classifications"></classification-list>
 
                     <div>
-                        <q-toggle v-model="currentCluster.public" label="I accept the license and terms" />
+                        <q-toggle v-model="newCluster.public" label="Public" />
                     </div>
                     <div>
-                        <q-toggle v-model="currentCluster.public" label="I accept the license and terms" />
+                        <q-toggle v-model="newCluster.favorite" label="Favorite" />
                     </div>
+
+                    <div>
+                        <q-select standout v-model="newCluster.type" :options="clusterTypes" label="Collection Type"  bg-color="white"/>
+                    </div>
+
+
                     <div>
                         <q-btn label="Submit" type="submit" color="primary"/>
-                        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-lg" />
-                    </div>
-                    <div class="q-pa-md">
-                        <div class="q-col-gutter-md row items-start">
-                            <div class="col-6">
-                                <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" :ratio="4/3">
-                                    <div class="absolute-bottom text-subtitle1 text-center">
-                                        Caption
-                                    </div>
-                                </q-img>
-                            </div>
-                        </div>
-                    </div>
 
+                    </div>
                     <div>
-
-                        <q-input  filled
-                                  v-model="name"
-                                  label="Your name *"
-
-                                  lazy-rules
-                                  bg-color="white">
-                            <q-btn round dense flat icon="add" />
-                        </q-input>
-                    </div>
-
-                    <div>
-
-                        <q-select standout v-model="model" :options="currentCluster.Stars" label="Standout"  bg-color="white"/>
+                        <q-btn label="Reset" type="" color="primary" flat class="q-ml-lg" />
                     </div>
 
 
-                    <div class="q-pa-md" >
-                        <q-input
-                                v-model="text"
-                                filled
-                                type="textarea"
-                                bg-color="white"
-                        />
-                    </div>
+
 
 
 

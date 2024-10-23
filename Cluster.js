@@ -39,9 +39,9 @@ const Cluster = Vue.createApp({
                 required:true
             },
             clusterTypes: [
-                {name:'Figurine'},
-                {name:'Food'},
-                {name:'cards'}
+                'Figurine',
+                'Food',
+                'cards'
 
             ],
             pages:[
