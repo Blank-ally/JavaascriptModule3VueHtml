@@ -3,25 +3,11 @@ const Cluster = Vue.createApp({
     // data: all the data for the Cluster, must return an object
     data: function() {
         return {
-
-            NewStar:{
-                type: Star,
-                required:true
-            },
-            editStar:{
-                type: Star,
-                required:true
-                //TODO:add trade stuff with
-            },
+            NewStar:new Star(),
+            editStar: new Star(),
             newCluster: new Clust(),
-            editCluster: {
-                type: Clust,
-                required: true
-            },
-            classification:{
-                type:Classification,
-                required:true
-            },
+            editCluster:new Clust (),
+            classification:new Classification(),
             CLusterList: [
                 new Clust('MilkyWay', 'testing something real quick ' ,true,true,[{name: "Rare"},{name: "common"}, {name: "supernova"}], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
                         {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },

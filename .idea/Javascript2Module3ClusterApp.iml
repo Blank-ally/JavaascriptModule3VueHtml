@@ -12,7 +12,6 @@
     <orderEntry type="library" name="quasar" level="application" />
     <orderEntry type="library" name="vue" level="application" />
     <orderEntry type="library" name="jquery-3.7.1" level="application" />
-    <orderEntry type="library" name="vue" level="application" />
-    <orderEntry type="library" name="jquery-3.7.1" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
   </component>
 </module>

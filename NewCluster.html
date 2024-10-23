@@ -11,7 +11,7 @@
     <meta name="theme-color" content="#3e92cc">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="app.min.css">
+    <link rel="stylesheet" href="main.css">
 
 
 </head>
@@ -19,18 +19,11 @@
 <div id="Cluster">
 <header>
 
-    <l-nav-list :pages="pages"></l-nav-list>
+
 </header>
 <div class="container">
 
-    <div class="row">
-        <div class="py-5">
-            <div class="text-center">
-                <h1 class="display-5 mt-5 fw-bold">New Cluster</h1>
 
-            </div>
-        </div>
-    </div>
     <form class="row g-3 needs-validation" novalidate @submit.prevent="addNewCluster">
 
         <div class="col-md-4 position-relative">
@@ -82,17 +75,132 @@
         </div>
     </form>
 </div>
-<footer>
+    <q-layout view="hHh lpR fFf">
+
+        <q-header elevated >
+            <q-toolbar>
+                <q-toolbar-title>
+                    <q-btn flat  href="Clusters.html">
+                        <q-icon right size="2em">
+                            <i class="fa-solid fa-meteor grad"></i>
+                        </q-icon>
+                        Cluster
+                    </q-btn>
+
+                </q-toolbar-title>
+
+                <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+            </q-toolbar>
+        </q-header>
+
+        <q-drawer v-model="rightDrawerOpen" side="right" overlay elevated>
+            <!-- drawer content -->
+        </q-drawer>
+
+        <q-page-container>
 
 
-</footer>
+            <div class="row justify-center ">
+                <div class="col-6 text-center text-h3 q-pa-lg">
+                  New Cluster
+                </div>
+            </div>
+
+            <div class="q-pa-xl" style="max-width:400px;max-height: 1000px ">
+
+                <q-form
+                        @submit.prevent="addNewCluster"
+                        @reset="onReset"
+                        class="q-gutter-xl"
+                >
+                    <div>
+                        <q-input
+                                filled
+                                v-model="newCluster.name"
+                                label="Cluster Name *"
+                                lazy-rules
+                                bg-color="white"
+                                :rules="[ val => val && val.length > 0 || 'Please type something']"
+
+                        />
+
+                    </div>
+                    <div>
+
+                        <q-input  filled
+                                  v-model=""
+                                  label="New Classification"
+                                  lazy-rules
+                                  bg-color="white">
+                            <q-btn round dense flat icon="add" />
+                        </q-input>
+                    </div>
+
+
+
+                    <div>
+                        <q-toggle v-model="currentCluster.public" label="I accept the license and terms" />
+                    </div>
+                    <div>
+                        <q-toggle v-model="currentCluster.public" label="I accept the license and terms" />
+                    </div>
+                    <div>
+                        <q-btn label="Submit" type="submit" color="primary"/>
+                        <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-lg" />
+                    </div>
+                    <div class="q-pa-md">
+                        <div class="q-col-gutter-md row items-start">
+                            <div class="col-6">
+                                <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" :ratio="4/3">
+                                    <div class="absolute-bottom text-subtitle1 text-center">
+                                        Caption
+                                    </div>
+                                </q-img>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <q-input  filled
+                                  v-model="name"
+                                  label="Your name *"
+
+                                  lazy-rules
+                                  bg-color="white">
+                            <q-btn round dense flat icon="add" />
+                        </q-input>
+                    </div>
+
+                    <div>
+
+                        <q-select standout v-model="model" :options="currentCluster.Stars" label="Standout"  bg-color="white"/>
+                    </div>
+
+
+                    <div class="q-pa-md" >
+                        <q-input
+                                v-model="text"
+                                filled
+                                type="textarea"
+                                bg-color="white"
+                        />
+                    </div>
+
+
+
+                </q-form>
+
+            </div>
+
+
+        </q-page-container>
+
+    </q-layout>
 </div>
-<!--<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.umd.prod.js"></script>
 <script src="Cluster-models.js "></script>
-<script src="Main.js"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="Cluster.js"></script>
 <script src="l-nav-list.js"></script>
 <script src="l-nav-item.js"></script>
