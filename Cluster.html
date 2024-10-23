@@ -1,98 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+    <meta name="msapplication-TileColor" content="#3e92cc">
+    <meta name="msapplication-config" content="./images/browserconfig.xml">
+    <meta name="theme-color" content="#3e92cc">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Cluster</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="app.min.css">
-
+<!--    <link rel="stylesheet" href="app.min.css">-->
+<link rel="stylesheet" href="main.css">
 
 </head>
 <body>
 <div id="Cluster">
-<header>
 
-<l-nav-list :pages="pages"></l-nav-list>
+    <q-layout view="hHh lpR fFf">
 
-</header>
-<div class="container">
+        <l-nav-list :pages="pages"></l-nav-list>
 
-    <div class="row">
-        <div class="py-5">
-            <div class="text-center">
-                <div class="col">
-                <h1 class="display-5 mt-5 fw-bold">
-                    {{currentCluster.name}}</h1>
+        <q-page-container>
 
-                </div><!--change to cluster name-->
-                <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa-solid fa-bars"></i>
-                    </a>
+            <div class="row justify-center ">
+                <div class="col-6  justify-center text-h3">
+                    <div class="q-pa-xl">
+                        <q-card class="header-card text-center">
+                            <q-card-section>
+                                <div class="text-h2 q-pa-sm">{{ currentCluster.name }}</div>
+                                <div class="text-h5">created: {{currentCluster.creationDate}}</div>
+                            </q-card-section>
 
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" @click="setEditCluster"><i class="fa-solid fa-pen-to-square"></i> Edit</a></li>
-                       <li> <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-trash"></i> Delete</a>
-                        </li>
-                    </ul>
+                            <q-card-actions align="around">
+                                <q-btn padding="lg xl" flat @click="setEditCluster" class="p-4">
+                                    <q-icon left >
+                                       <i class="fa-solid fa-pen-to-square"></i>
+                                    </q-icon>
+                                </q-btn>
+                                <q-btn  padding="lg xl" flat  @click="confirm = true">
+                                    <q-icon>
+                                        <i class="fa-solid fa-trash"></i>
+                                    </q-icon>
+                                </q-btn>
+                            </q-card-actions>
+                        </q-card>
+                    </div>
                 </div>
-
             </div>
-        </div>
-    </div>
 
-    <div class="row py-2">
 
-        <div class="container-fluid">
-        <form class="d-flex" role="search">
-
-            <div class="col-4">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <div class="row q-col-gutter-lg self-center">
+                <div class="col-5">
+                    <div class=" q-pa-lg">
+                        <q-btn flat color="primary"  href="NewStar.html">
+                            <q-icon left size="1em">
+                                <i class="fa-solid fa-circle-plus fa-2x" ></i> </q-icon>
+                            New Star
+                        </q-btn>
+                    </div>
                 </div>
-            <div class="col-3">
-            <button class="btn btn-primary" type="submit">Search</button>
             </div>
-            <div class="col-4">
-            <select class="form-select" aria-label="Default select example">
-                <option v-for="c in currentCluster.classifications" :value="c.name"> {{c.name}} </option>
 
-            </select>
+            <div class="row q-col-gutter-lg self-center">
+
             </div>
-        </form>
-    </div>
+            <div class="row q-col-gutter-lg self-center justify-center">
+                <div class="col-8">
+                    <star-list :list="currentCluster.Stars"></star-list>
+                </div>
+            </div>
 
-        </div>
 
-    <star-list :list="currentCluster.Stars"></star-list>
+
+            <!-- modal -->
+            <q-dialog v-model="confirm" persistent >
+                <q-card  style="width: 700px; max-width: 80vw;">
+                    <q-card-section class="row items-center">
+
+                        <div class="text-h6">Delete {{currentCluster.name}}?</div>
+                    </q-card-section>
+
+                    <q-card-section class="q-pt-none">
+
+                        Once deleted a cluster cannot be recovered are you sure you want to delete this cluster.
+                    </q-card-section>
+
+                    <q-card-actions align="right">
+                        <div class="q-gutter-xl">
+                        <q-btn flat label="Delete" color="primary" v-close-popup @click="deleteCluster(currentCluster)"/>
+                        </div>
+                        <div class="q-gutter-xl">
+                        <q-btn flat label="Cancel" color="primary" v-close-popup />
+                        </div>
+                    </q-card-actions>
+                </q-card>
+            </q-dialog>
+
+        </q-page-container>
+
+    </q-layout>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete {{currentCluster.name}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-               Once deleted a cluster cannot be recovered are you sure you want to delete this cluster.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" @click="deleteCluster(currentCluster)">Delete</button>
-                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-<footer>
-
-</footer>
-</div>
+<!--
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
 <script src="Main.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.umd.prod.js"></script>
+<script src="Cluster-models.js "></script>
 <script src="Cluster.js"></script>
 <script src="star-list.js"></script>
 <script src="star-item.js"></script>
@@ -102,6 +123,7 @@
 <script>
     // start the app after all the other JS has been loaded
     Cluster.mount('#Cluster');
+
 </script>
 
 </body>

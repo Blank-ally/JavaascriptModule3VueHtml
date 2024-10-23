@@ -47,19 +47,19 @@ Cluster.component('clusterItem', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <div class="card h-100 " @click="SetCurrentCluster()">
-        <div class="card-body">
-          <div class="row ">
-            <div v-for="(star, x) in cluster.Stars" class="col col-6 pb-2">
-              <img v-if="x <= 3 " :src="star.photo" class="w-100 h-100"/>
-            </div>
-          </div>
+
+      <q-card class="cursor-pointer" @click="SetCurrentCluster()">
+        <div v-for="(star, x) in cluster.Stars" class="col-6">
+          <img style="max-height: 90px; max-width: 150px;width: 100%; height: 100%;" v-if="x <= 1 " :src="star.photo"/>
         </div>
-        <div class="m-auto">
-          <h3>{{cluster.name}}</h3>
-        </div>
-      </div>
- 
+        <q-card-section>
+
+          <div class="text-h6">{{cluster.name }}</div>
+         
+
+        </q-card-section>
+        
+      </q-card>
     `,
     mounted: function () {
 // this could also be done in the crated block as well

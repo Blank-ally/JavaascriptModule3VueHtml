@@ -1,88 +1,56 @@
+
 const Cluster = Vue.createApp({
     // data: all the data for the Cluster, must return an object
     data: function() {
         return {
 
             NewStar:{
-                photo:'',
-                name:'',
-                Cluster:'',
-                Classi :'',
-                qty: 0,
-                notes:'',
-                Trade:false
-                //TODO:add trade stuff with
+                type: Star,
+                required:true
             },
             editStar:{
-                photo:'',
-                name:'',
-                Cluster:'',
-                Classi:'',
-                qty: 0,
-                notes:'',
-                Trade:false
+                type: Star,
+                required:true
                 //TODO:add trade stuff with
             },
-            newCluster: {
-                name: '',
-                public: false,
-                favorite: false,
-                purchased: false,
-                Complete: false,
-                classifications: [],
-                type:'',
-                Stars:[]
-            },
+            newCluster: new Clust(),
             editCluster: {
-                name: '',
-                public: false,
-                favorite: false,
-                purchased: false,
-                Complete: false,
-                classifications:[],
-                type:'',
-                Stars:[]
+                type: Clust,
+                required: true
             },
             classification:{
-                name: ''
+                type:Classification,
+                required:true
             },
             CLusterList: [
-                {name: 'MilkyWay', type: 'cards',public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}],Stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum" },
+                new Clust('MilkyWay', 'testing something real quick ' ,true,true,[{name: "Rare"},{name: "common"}, {name: "supernova"}], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
                         {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                         {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
-                        {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }] ,type: "galaxies"},
-                {name: 'test2',type: 'cards' ,public:true, favorite: true, Complete: false, classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], Stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }]},
-                {name: 'test3',type: 'cards' ,public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], Stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }]},
-                {name: 'test4',type: 'cards' ,public:true, favorite: true,  Complete: false,classifications: [{name: "Rare"},{name: "common"}, {name: "supernova"}], Stars:[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }]},
-                {name: 'Nova',type: 'cards',public:true, favorite: true , Complete: false, Stars:[],classifications: []},
+                        {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
+                    new Clust('MilkyWay', 'testing something real quick ' ,true,true,[{name: "Rare"},{name: "common"}, {name: "supernova"}], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
+                    {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
+                    {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
+                    {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
+
+                new Clust('MilkyWay', 'testing something real quick ' ,true,true,[{name: "Rare"},{name: "common"}, {name: "supernova"}], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
+                    {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
+                    {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
+                    {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
+
+                new Clust('MilkyWay', 'testing something real quick ' ,true,true,[{name: "Rare"},{name: "common"}, {name: "supernova"}], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
+                    {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
+                    {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
+                    {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
 
             ],
 
-       /*     StarList:[
-                {name:'Absolutno',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum", Cluster: 'Milkway' },
-                {name:'star2',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" , Cluster: 'Milkway'},
-                {name:'star3',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum",Cluster: 'Milkway' },
-                {name:'star4',photo: "pexels-pixabay-41951.jpg",class:'common',notes:"lorem ipsum" ,Cluster: 'Nova' }
-
-            ],*/
             currentCluster:{
-                name: '',
-                public: false,
-                favorite: false,
-                purchased: false,
-                Complete: false,
-                classifications: [],
-                type:'',
-                Stars:[]
+                type: Clust,
+                required: true
             },
             currentStar:{
-                photo:'',
-                name:'',
-                Cluster:'',
-                Classi:'',
-                qty: 0,
-                notes:'',
-                Trade:false
+                type: Star,
+                required:true
             },
             clusterTypes: [
                 {name:'Figurine'},
@@ -91,8 +59,10 @@ const Cluster = Vue.createApp({
 
             ],
             pages:[
-                {name:'Clusters', link:'Clusters.html'}
-            ]
+                {name:'Clusters', href:'Clusters.html'}
+            ],
+            rightDrawerOpen: false,
+            confirm: false,
 
         }
     },
@@ -100,17 +70,6 @@ const Cluster = Vue.createApp({
     // methods: usually "events" triggered by v-on:
     methods: {
 
-   /*   SetCurrentCluster(cluster) {
-            console.log(cluster)
-            this.currentCluster = cluster;
-            window.location.href = 'Cluster.html'
-        },*/
-/*        SetCurrentStar(star){
-            debugger
-
-            this.currentStar = star;
-            this.setEditStar()
-        },*/
         addNewStar() {
             debugger;
             clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
@@ -119,16 +78,7 @@ const Cluster = Vue.createApp({
             this.CLusterList[ind] = this.currentCluster
             // clear the form
   //todo: refactor to accept multiple aruguments for cluster
-            this.NewStar = {
-                photo: '',
-                name: '',
-                Cluster: '',
-                Classi: '',
-                qty: 0,
-                notes: '',
-                Trade: false
-                //TODO:add trade stuff with
-            }
+            this.NewStar = new Star()
              window.location.href = 'Cluster.html'
         },
         addNewCluster() {
@@ -137,16 +87,7 @@ const Cluster = Vue.createApp({
             // clear the form
             this.currentCluster = this.newCluster
 
-            this.newCluster = {
-                name: '',
-                public: false,
-                favorite: false,
-                purchased: false,
-                Complete: false,
-                classifications: [],
-                type: '',
-                Stars: []
-            };
+            this.newCluster = new Clust()
 
             window.location.href = 'NewStar.html'
         },
@@ -156,7 +97,7 @@ const Cluster = Vue.createApp({
             if (name.trim() !== '') {
                 this.classification.name = name
                 this.newCluster.classifications.push(this.classification);
-                this.classification = {name: ''}
+                this.classification = new Classification();
             }
 
         },
@@ -248,6 +189,9 @@ const Cluster = Vue.createApp({
 
 
 
+        },
+        toggleRightDrawer() {
+            this.rightDrawerOpen = !this.rightDrawerOpen;
         }
     },
 
@@ -339,3 +283,12 @@ const Cluster = Vue.createApp({
 
     }
 });
+Cluster.use(Quasar ,{
+    config: {
+        brand: {
+            primary: '#BF877A',
+            // ... or all other brand colors
+        },
+
+    }
+})

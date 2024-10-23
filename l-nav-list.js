@@ -39,7 +39,7 @@ Cluster.component('lNavList', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <nav class="navbar bg-body-tertiary fixed-top">
+<!--      <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="Clusters.html">Cluster <i class="fa-solid fa-meteor grad"></i></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -61,6 +61,23 @@ Cluster.component('lNavList', {
             </div>
           </div>
         </div>
-      </nav>
+      </nav>-->
+
+
+<q-header elevated >
+  <q-toolbar>
+    <q-toolbar-title>
+      <q-btn flat  href="Clusters.html">
+        <q-icon right size="2em">
+          <i class="fa-solid fa-meteor grad"></i>
+        </q-icon>
+        Cluster
+      </q-btn>
+
+    </q-toolbar-title>
+
+    <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+  </q-toolbar>
+</q-header>
     `,
 });

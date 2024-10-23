@@ -38,23 +38,11 @@ Cluster.component('starList', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <div class="container m-2 p-5">
-        <div class="card text-center">
-          <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-              <li class="nav-item">
-                <a class="btn " href="NewStar.html"><i class="fa-solid fa-circle-plus"></i> New Star</a>
-              </li>
-            </ul>
-          </div>
-          <div class="card-body">
-            <div class="card-group row-cols-1 row-cols-md-3 align-items-stretch">
-              <div class="col d-flex" v-for="item in list">
-               <star-item :star="item"></star-item>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div class="row q-col-gutter-md">
+      <div class="col-lg-3 col-sm-6" v-for="item in list">
+        <star-item :star="item"></star-item>
+      </div>
       </div>
     `,
 });

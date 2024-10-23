@@ -1,14 +1,12 @@
 // Component names should be TitleCase/PascalCase
 // and should be multi-word, but singular in plurality.
 // When used in HTML/templates, they become kabob-case.
-Cluster.component('clusterList', {
+Cluster.component('classificationList', {
     // data:    Data created and maintained by this component.
     //          This function is like a constructor. It gets called
     //          separately for each instance of this component
     data: function(){
-        return {
-            filterKeyword: '',
-        }
+        return {}
     },
 
     // props:   Data passed into the component via attributes.
@@ -25,13 +23,6 @@ Cluster.component('clusterList', {
 
     // methods: Usually "events" triggered by v-on:
     methods: {
-        search(keyword){
-            console.log('search: ', keyword);
-            this.filterKeyword = keyword;
-        },
-        sort(property){
-            this.sortProperty = property;
-        }
 
     },
 
@@ -40,13 +31,6 @@ Cluster.component('clusterList', {
     //              Treat these like regular values that you would use
     //              in data or props.
     computed: {
-        filteredlist(){
-            return this.list.filter(clust => {
-                return clust.name.toLowerCase().includes(this.filterKeyword.toLowerCase())
-
-            })
-
-        }
 
     },
 
@@ -54,16 +38,11 @@ Cluster.component('clusterList', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <div>
-      <div class="col-6 col-md-4">
-        <l-search :onSearch="search"></l-search>
-      </div>
-      <div class="row q-col-gutter-md">
-      <div class="col-lg-4 col-sm-6" v-for="cluster in filteredlist">
-       <cluster-item :cluster="cluster"></cluster-item>
-      </div>
-      </div>
+      <div class="row p-4">
+        <label>Classifications</label> <!--//TODO add condition to Hide or show this-->
+        <ul class="list-group" >
+          <li class="list-group-item" v-for="clas in list">{{clas.name}}</li>
+        </ul>
       </div>
     `,
-
 });

@@ -3,28 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Clusters</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+    <meta name="msapplication-TileColor" content="#3e92cc">
+    <meta name="msapplication-config" content="./images/browserconfig.xml">
+    <meta name="theme-color" content="#3e92cc">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="app.min.css">
+<!--    <link rel="stylesheet" href="app.min.css">-->
+    <link rel="stylesheet" href="main.css">
 
 </head>
 <body>
 <div id="Cluster">
-    <header>
+    <q-layout view="hHh lpR fFf">
         <l-nav-list :pages="pages"></l-nav-list>
-    </header>
-<div class="container" >
-    <div class="row">
-        <div class="py-5">
+
+        <q-drawer v-model="rightDrawerOpen" side="right" overlay elevated>
+            <!-- drawer content -->
+        </q-drawer>
+<!--    <div class="row q-col-gutter-lg self-center">
+        <div class="col-4">
+            <div class=" q-px-lg">
             <div class="text-center">
                 <h1 class="display-5 mt-5 fw-bold">Clusters</h1>
             </div>
         </div>
     </div>
-<div class="container">
-    <a class="nav-link active" aria-current="page" href="NewCluster.html"><i class="fa-solid fa-circle-plus fa-2x" ></i> New Cluster</a>
-</div>
-    <div class="container">
+&lt;!&ndash;    <div class="row q-col-gutter-lg self-center">
+        <div class="col-8">
+            <div class=" q-px-lg">
+                <q-btn flat color="primary"  href="NewCluster.html">
+                    <q-icon left size="1em">
+                        <i class="fa-solid fa-circle-plus fa-2x" ></i> </q-icon>
+                    New Cluster
+                </q-btn>
+            </div>
+        </div>
+    </div>&ndash;&gt;
+&lt;!&ndash;    <div class="container">
         <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 p-3 g-2 g-lg-3" >
 
 <cluster-list :list="CLusterList"></cluster-list>
@@ -32,23 +51,55 @@
         </div>
 
 
-    </div>
+    </div>&ndash;&gt;
 
 
+</div>-->
+
+        <q-page-container>
+
+            <div class="row justify-center ">
+                <div class="col-6 text-center text-h3 q-pa-lg">
+                    Clusters
+                </div>
+            </div>
+
+
+            <div class="row q-col-gutter-lg self-center">
+                <div class="col-4">
+                    <div class=" q-px-lg">
+                        <q-btn flat color="primary"  href="NewCluster.html">
+                            <q-icon left size="1em">
+                                <i class="fa-solid fa-circle-plus fa-2x" ></i> </q-icon>
+                            New Cluster
+                        </q-btn>
+                    </div>
+                </div>
+            </div>
+            <div class="row q-col-gutter-lg self-center justify-center">
+                <div class="col-8">
+                    <cluster-list :list="CLusterList"></cluster-list>
+                </div>
+            </div>
+        </q-page-container>
+
+    </q-layout>
 </div>
-
-
-</div>
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.umd.prod.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 <script src="Main.js"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.umd.prod.js"></script>
+<script src="Cluster-models.js"></script>
 <script src="Cluster.js"></script>
 <script src="cluster-list.js"></script>
 <script src="cluster-item.js"></script>
 <script src="l-nav-list.js"></script>
 <script src="l-nav-item.js"></script>
+<script src="l-search.js"></script>
+
 
 <script>
     // start the app after all the other JS has been loaded

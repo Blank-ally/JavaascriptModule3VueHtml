@@ -49,8 +49,8 @@ Cluster.component('starItem', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <div class="card my-3 h-100 btn" @click="SetCurrentStar()">
-        <img :src="star.photo" class="card-img-top w-100" >
+<!--      <div class="card my-3 h-100 btn" @click="SetCurrentStar()">
+        <img :src="star.photo">
         <div class="card-body">
           <h5 class="card-title">{{star.name}}</h5>
           <p class="card-text">Qty: {{star.qty}}</p>
@@ -58,7 +58,18 @@ Cluster.component('starItem', {
           <p class="card-text">{{star.notes}}</p>
           <p class="card-text"><small class="text-body-secondary">{{star.Cluster}}</small></p>
         </div>
-      </div>
+      </div>-->
+
+      <q-card class="my-card cursor-pointer" @click="SetCurrentStar()">
+        <img :src="star.photo">
+
+        <q-card-section>
+          <div class="text-h6">
+            {{star.name}}
+     </div>
+        </q-card-section>
+
+      </q-card>
     `,
     mounted: function () {
 // this could also be done in the crated block as well

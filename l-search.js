@@ -6,7 +6,10 @@ Cluster.component('lSearch', {
     //          This function is like a constructor. It gets called
     //          separately for each instance of this component
     data: function(){
-        return {}
+        return {
+
+            keyword: '',
+        }
     },
 
     // props:   Data passed into the component via attributes.
@@ -14,12 +17,16 @@ Cluster.component('lSearch', {
     //          are pass-by-reference. Primitives (number, string, boolean)
     //          are pass-by-value.
     props: {
-
+        onSearch: Function
     },
+
 
     // methods: Usually "events" triggered by v-on:
     methods: {
-
+        search(){
+            //this.$emit('search', this.keyword)
+            this.onSearch(this.keyword);
+        }
     },
 
     // computed:    Values that are updated and cached if dependencies change.
@@ -34,9 +41,18 @@ Cluster.component('lSearch', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-        <div>
-            <h3>Yer Sample Component</h3>
-            <p>How much does the pirate pay for an ear-piercing?</p>                                                                                                         <p><b>A buccaneer!</b></p>
-        </div>
+      <q-form @submit.prevent="search" class="q-flex row q-pb-lg">
+        <q-input
+            v-model="keyword"
+            label="Search"
+            placeholder="Collection"
+            class="col"
+            filled
+            bg-color="white"
+        />
+        <q-btn type="submit" color="primary" class="col-auto">
+          <q-icon name="search" />
+        </q-btn>
+      </q-form>
     `,
 });

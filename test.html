@@ -1,102 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="app.min.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+    <meta name="msapplication-TileColor" content="#3e92cc">
+    <meta name="msapplication-config" content="./images/browserconfig.xml">
+    <meta name="theme-color" content="#3e92cc">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="main.css">
 </head>
+
 <body>
-<header>
+<!-- example of injection point where you write your app template -->
+<div id="Cluster">
+    <q-layout view="hHh lpR fFf">
 
-    <nav class="navbar bg-body-tertiary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Cluster
+        <q-header elevated >
+            <q-toolbar>
+                <q-toolbar-title>
+                    <q-btn flat  href="Clusters.html">
+                        <q-icon right size="2em">
+                            <i class="fa-solid fa-meteor grad"></i>
+                        </q-icon>
+                        Cluster
+                    </q-btn>
 
+                </q-toolbar-title>
 
-              <i class="fa-solid fa-meteor grad"></i>
+                <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
+            </q-toolbar>
+        </q-header>
 
+        <q-drawer v-model="rightDrawerOpen" side="right" overlay elevated>
+            <!-- drawer content -->
+        </q-drawer>
 
+        <q-page-container>
 
-            </a> <!--TODO add the cluster page to all of the sub pages nav-->
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Cluster <i class="fa-solid fa-meteor"></i></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+            <div class="row justify-center ">
+                <div class="col-6 text-center text-h3 q-pa-lg">
+                    One of two cols
                 </div>
             </div>
-        </div>
-    </nav>
 
-</header>
-<!--<div id="Cluster">
-    <div class="container">
-        <div class="row row-cols-2 row-cols-md-3 g-4" >
-            <div class="loop" v-for="(cluster,x) in CLusterList">
-                <div class="card" @click="SetCurrentCluster(cluster)">
-                    <div class="card-body">
-                        <div class="row mx-2">
-                            <div v-for="(star, x) in cluster.Stars" class="col col-6">
-                                <img v-if="x <= 3 ":src="star.photo" class="w-100 h-100"/>
-                            </div>
-                        </div>
+
+<!--            <div class="row q-col-gutter-lg self-center">
+                <div class="col-4">
+                    <div class=" q-px-lg">
+                        <q-btn flat color="primary"  href="NewCluster.html">
+                            <q-icon left size="1em">
+                            <i class="fa-solid fa-circle-plus fa-2x" ></i> </q-icon>
+                            New Cluster
+                        </q-btn>
                     </div>
                 </div>
-                <h3>{{cluster.name}}</h3>
             </div>
-        </div>
+            <div class="row q-col-gutter-lg self-center justify-center">
+                <div class="col-4">
+
+                        <div class="q-pa-md row items-start q-gutter-md">
+                            <q-card class="my-card cursor-pointer">
+                                <img src="https://cdn.quasar.dev/img/mountains.jpg">
+
+                                <q-card-section>
+                                    <div class="text-h6">Our Changing Planet</div>
+
+                                </q-card-section>
+
+                                <q-card-section class="q-pt-none">
+                                    {{ lorem }}
+                                </q-card-section>
+                            </q-card>
+
+                            <q-card class="my-card cursor-pointer">
+                                <div class="row">
+                                    <div class="col-6"><img style="max-height: 90px; max-width: 150px;width: 100%; height: 100%; " class="clust-img" src="https://cdn.quasar.dev/img/mountains.jpg"></div>
+                                    <div class="col-6"><img style="max-height: 90px; max-width: 150px; width: 100%; height: 100%;" class="clust-img" src="https://cdn.quasar.dev/img/mountains.jpg"></div>
+                                    <div class="col-6"><img style="max-height: 90px; max-width: 150px; width: 100%; height: 100%;" class="clust-img" src="https://cdn.quasar.dev/img/mountains.jpg"></div>
+                                    <div class="col-6"><img style="max-height: 90px; max-width: 150px; width: 100%; height: 100%;"  class="clust-img" src="https://cdn.quasar.dev/img/mountains.jpg"></div>
+                                </div>
 
 
-    </div>
+                                <q-card-section>
+                                    <div class="text-h6">Our Changing Planet</div>
 
-</div>-->
+                                </q-card-section>
+
+                                <q-card-section class="q-pt-none">
+                                    {{ lorem }}
+                                </q-card-section>
+                            </q-card>
 
 
+                                <div class="q-pa-md row items-start q-gutter-md">
+                                    <q-card class="my-card bg-secondary text-white">
+                                        <q-card-section>
+                                            <div class="text-h6">Our Changing Planet</div>
+                                            <div class="text-subtitle2">by John Doe</div>
+                                        </q-card-section>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-<script src="Main.js"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+                                        <q-card-section>
+                                            {{ lorem }}
+                                        </q-card-section>
+
+                                        <q-separator dark />
+
+                                        <q-card-actions>
+                                            <q-btn flat>Action 1</q-btn>
+                                            <q-btn flat>Action 2</q-btn>
+                                        </q-card-actions>
+                                    </q-card>
+
+                                    <q-card class="my-card">
+                                        <q-card-section>
+                                            <div class="text-h6">Our Changing Planet</div>
+                                            <div class="text-subtitle2">by John Doe</div>
+                                        </q-card-section>
+
+                                        <q-separator />
+
+                                        <q-card-actions vertical>
+                                            <q-btn flat>Action 1</q-btn>
+                                            <q-btn flat>Action 2</q-btn>
+                                        </q-card-actions>
+                                    </q-card>
+
+                                    <q-card class="my-card bg-purple text-white">
+                                        <q-card-section>
+                                            <div class="text-h6">Our Changing Planet</div>
+                                            <div class="text-subtitle2">by John Doe</div>
+                                        </q-card-section>
+
+                                        <q-card-actions>
+                                            <q-btn flat>Action 1</q-btn>
+                                            <q-btn flat>Action 2</q-btn>
+                                        </q-card-actions>
+                                    </q-card>
+
+                                    <q-card flat bordered class="my-card" >
+                                        <q-card-section>
+                                            <div class="row items-center no-wrap">
+                                                <div class="col">
+                                                    <div class="text-h6">Our Planet</div>
+                                                    <div class="text-subtitle2">by John Doe</div>
+                                                </div>
+
+                                                <div class="col-auto">
+                                                    <q-btn color="grey-7" round flat icon="more_vert">
+                                                        <q-menu cover auto-close>
+                                                            <q-list>
+                                                                <q-item clickable>
+                                                                    <q-item-section>Remove Card</q-item-section>
+                                                                </q-item>
+                                                                <q-item clickable>
+                                                                    <q-item-section>Send Feedback</q-item-section>
+                                                                </q-item>
+                                                                <q-item clickable>
+                                                                    <q-item-section>Share</q-item-section>
+                                                                </q-item>
+                                                            </q-list>
+                                                        </q-menu>
+                                                    </q-btn>
+                                                </div>
+                                            </div>
+                                        </q-card-section>
+
+                                        <q-card-section>
+                                     stufffffffffffffffffffffffffffffff
+                                        </q-card-section>
+
+                                        <q-separator />
+
+                                        <q-card-actions>
+                                            <q-btn flat>Action 1</q-btn>
+                                            <q-btn flat>Action 2</q-btn>
+                                        </q-card-actions>
+                                    </q-card>
+                                </div>
+
+
+                            <cluster-list :list="CLusterList"></cluster-list>
+                        </div>
+                </div>
+            </div>-->
+        </q-page-container>
+
+    </q-layout>
+
+</div>
+
+<!-- Add the following at the end of your body tag -->
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.umd.prod.js"></script>
+<script src="Cluster-models.js "></script>
 <script src="Cluster.js"></script>
-<script src="js/Cluster-components.js"></script>
+<script src="cluster-list.js"></script>
+<script src="cluster-item.js"></script>
 <script>
-    // start the app after all the other JS has been loaded
-    Cluster.mount('#Cluster');
+
+    Cluster.mount('#Cluster')
+
 </script>
-
-
 </body>
 </html>
