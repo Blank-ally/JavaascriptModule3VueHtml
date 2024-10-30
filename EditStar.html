@@ -259,7 +259,7 @@
                     >
                     </q-input>
 
-                    <q-select standout v-model="editStar.classi" :options="currentCluster.classifications" label="Classifications"  bg-color="white"></q-select>
+                    <q-select standout v-model="editStar.classi" :options="currentCluster.classifications.map(item => ({value: item, label: item.name}))" label="Classifications"   bg-color="white"></q-select>
 
 
                     <q-input

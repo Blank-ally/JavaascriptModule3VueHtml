@@ -25,7 +25,7 @@ Cluster.component('classificationList', {
     methods: {
         deleteClassi(item){
             debugger
-            this.newCluster.classifications.splice(this.newCluster.classifications.indexOf(item),1)
+            this.newCluster.classifications.splice(this.newCluster.classifications.getItems().indexOf(item),1)
         },
 
     },

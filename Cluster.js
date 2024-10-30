@@ -10,7 +10,7 @@ const Cluster = Vue.createApp({
             classification:new Classification(),
             CLusterList: [
                 new Clust('MilkyWay', 'testing something real quick ' ,true,true,
-                    new ClusterCollection()
+                    new ClassificationCollection()
                         .addItem(new ClassificationItem('Rare'))
                         .addItem(new ClassificationItem('Common'))
                         .addItem(new ClassificationItem('special'))
@@ -19,20 +19,27 @@ const Cluster = Vue.createApp({
                         {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                         {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
                     new Clust('MilkyWay', 'testing something real quick ' ,true,true,
-                        new ClusterCollection()
+                        new ClassificationCollection()
                         .addItem(new ClassificationItem(new Classification('Rare')))
-                        .addItem(new ClassificationItem('Common'))
-                        .addItem(new ClassificationItem('special')), 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
+                        .addItem(new ClassificationItem(new Classification('Common')))
+                        .addItem(new ClassificationItem(new Classification('special'))), 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
                     {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
 
-                new Clust('MilkyWay', 'testing something real quick ' ,true,true,["Rare", "common", "supernova"], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
+                new Clust('MilkyWay', 'testing something real quick ' ,true,true,
+                    new ClassificationCollection()
+                    .addItem(new ClassificationItem(new Classification('Rare')))
+                    .addItem(new ClassificationItem(new Classification('Common')))
+                    .addItem(new ClassificationItem(new Classification('special'))), 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
                     {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
 
-                new Clust('MilkyWay', 'testing something real quick ' ,true,true,["Rare", "common","supernova"], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
+                new Clust('MilkyWay', 'testing something real quick ' ,true,true,    new ClassificationCollection()
+                    .addItem(new ClassificationItem(new Classification('Rare')))
+                    .addItem(new ClassificationItem(new Classification('Common')))
+                    .addItem(new ClassificationItem(new Classification('special'))), 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
                     {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
@@ -98,6 +105,7 @@ const Cluster = Vue.createApp({
 
             if (name.trim() !== '') {
                 this.classification.name = name
+                //this.newCluster.classifications.addItem(new ClassificationItem(new Classification(this.classification)));
                 this.newCluster.classifications.push(this.classification);
                 this.classification = new Classification();
             }
