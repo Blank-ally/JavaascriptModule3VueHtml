@@ -41,6 +41,7 @@ Cluster.component('clusterList', {
     //              in data or props.
     computed: {
         filteredlist(){
+            debugger
             return this.list.filter(clust => {
                 return clust.name.toLowerCase().includes(this.filterKeyword.toLowerCase())
 

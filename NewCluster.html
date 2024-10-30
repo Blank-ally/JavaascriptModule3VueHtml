@@ -20,21 +20,7 @@
 
     <q-layout view="hHh lpR fFf">
 
-        <q-header elevated >
-            <q-toolbar>
-                <q-toolbar-title>
-                    <q-btn flat  href="Clusters.html">
-                        <q-icon right size="2em">
-                            <i class="fa-solid fa-meteor grad"></i>
-                        </q-icon>
-                        Cluster
-                    </q-btn>
-
-                </q-toolbar-title>
-
-                <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
-            </q-toolbar>
-        </q-header>
+        <l-nav-list :pages="pages"></l-nav-list>
 
         <q-drawer v-model="rightDrawerOpen" side="right" overlay elevated>
             <!-- drawer content -->
@@ -49,14 +35,13 @@
                 </div>
             </div>
 
-            <div class="q-pa-xl" style="max-width:400px;max-height: 1000px ">
-
+            <div class="q-pa-xl row justify-center ">
+                <div class="col-6">
                 <q-form
                         @submit.prevent="addNewCluster"
                         @reset="onReset"
-                        class="q-gutter-xl"
-                >
-                    <div>
+                        class="q-gutter-sm" >
+
                         <q-input
                                 filled
                                 v-model="newCluster.name"
@@ -64,42 +49,33 @@
                                 lazy-rules
                                 bg-color="white"
                                 :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        ></q-input>
 
-                        />
-
-                    </div>
-                    <div>
 
                         <q-input  filled
                                   label="New Classification"
                                   v-model="classification.name"
                                   lazy-rules
                                   bg-color="white">
-                            <q-btn round dense flat icon="add"@click="addClassification(classification.name)" />
+                            <q-btn round dense flat icon="add"@click="addClassification(classification.name)" ></q-btn>
                         </q-input>
-                    </div>
+
 
                     <classification-list :list="newCluster.classifications"></classification-list>
 
-                    <div>
-                        <q-toggle v-model="newCluster.public" label="Public" />
-                    </div>
-                    <div>
-                        <q-toggle v-model="newCluster.favorite" label="Favorite" />
-                    </div>
 
-                    <div>
-                        <q-select standout v-model="newCluster.type" :options="clusterTypes" label="Collection Type"  bg-color="white"/>
-                    </div>
+                        <q-toggle v-model="newCluster.public" label="Public" ></q-toggle>
+
+                        <q-toggle v-model="newCluster.favorite" label="Favorite" ></q-toggle>
+
+                        <q-select standout v-model="newCluster.type" :options="clusterTypes" label="Collection Type"  bg-color="white"></q-select>
 
 
-                    <div>
-                        <q-btn label="Submit" type="submit" color="primary"/>
 
-                    </div>
-                    <div>
-                        <q-btn label="Reset" type="" color="primary" flat class="q-ml-lg" />
-                    </div>
+
+                        <q-btn label="Submit" type="submit" color="primary"></q-btn>
+
+                        <q-btn label="Reset" type="" color="primary" class="q-ml-lg"></q-btn>
 
 
 
@@ -108,6 +84,7 @@
 
                 </q-form>
 
+            </div>
             </div>
 
 

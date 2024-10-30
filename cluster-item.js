@@ -8,7 +8,7 @@ Cluster.component('clusterItem', {
     data: function(){
         return {
 
-            currentCluster:{...this.cluster,stars:[...this.cluster.Stars]}
+            currentCluster:{...this.ClusterItem,stars:[...this.cluster.Stars]}
         }
     },
 
@@ -48,13 +48,15 @@ Cluster.component('clusterItem', {
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
 
-      <q-card class="cursor-pointer" @click="SetCurrentCluster()">
+      <q-card class="my-card cursor-pointer" @click="SetCurrentCluster()">
+      <div class="row">
         <div v-for="(star, x) in cluster.Stars" class="col-6">
-          <img style="max-height: 90px; max-width: 150px;width: 100%; height: 100%;" v-if="x <= 1 " :src="star.photo"/>
+          <img style="max-height: 90px; max-width: 150px;width: 100%; height: 100%;" v-if="x <= 3 " :src="star.photo"/>
+        </div>
         </div>
         <q-card-section>
 
-          <div class="text-h6">{{cluster.name }}</div>
+          <div class="text-h6">{{cluster.name}}</div>
          
 
         </q-card-section>

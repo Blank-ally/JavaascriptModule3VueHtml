@@ -23,6 +23,10 @@ Cluster.component('classificationList', {
 
     // methods: Usually "events" triggered by v-on:
     methods: {
+        deleteClassi(item){
+            debugger
+            this.newCluster.classifications.splice(this.newCluster.classifications.indexOf(item),1)
+        },
 
     },
 
@@ -38,11 +42,12 @@ Cluster.component('classificationList', {
     //              ONE root HTML element. You can reference any
     //              data, props, methods, computed, etc using: {{ name }}
     template: `
-      <div class="row p-4">
-        <label>Classifications</label> <!--//TODO add condition to Hide or show this-->
-        <ul class="list-group" >
-          <li class="list-group-item" v-for="clas in list">{{clas.name}}</li>
-        </ul>
-      </div>
+
+  
+        <q-list class="bg-grey-11" bordered separator >
+           <q-item-label header>Classifications</q-item-label>
+          <classification-item @delclas="clas => deleteClassi(clas)" :clas="clas"  clickable v-for="clas in list"></classification-item>
+        </q-list>
+
     `,
 });

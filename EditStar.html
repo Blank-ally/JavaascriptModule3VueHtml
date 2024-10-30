@@ -12,14 +12,14 @@
 
     <title>Edit Star</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="app.min.css">
+    <link rel="stylesheet" href="main.css">
 
 
 </head>
 <body>
 
 <div id="Cluster">
-    <header>
+<!--    <header>
         <l-nav-list :pages="pages"></l-nav-list>
     </header>
     <div>
@@ -43,10 +43,10 @@
                 <div class="col-md-6 order-sm-1">
                     <div class="col-md-6 float-md-end mb-3 ms-md-3">
                         <img  class="img-fluid img-thumbnail h-100 w-100 " v-if="editStar.photo != null " :src="editStar.photo"/>
-                        <!--<div class="input-group px-3  py-3 ">
+                        &lt;!&ndash;<div class="input-group px-3  py-3 ">
                             <label class="input-group-text" for="inputGroupFile01">Upload image</label>
                             <input type="file" class="form-control" id="inputGroupFile01" v-model="editStar.photo">
-                        </div>-->
+                        </div>&ndash;&gt;
                         <div class="input-group px-3  py-3 ">
                             <label class="input-group-text" for="inputGroupFile01">Upload image</label>
                             <input type="text" class="form-control" id="inputGroupFile01" v-model="editStar.photo">
@@ -69,11 +69,11 @@
 
                             <label for="StarClusterName" class="form-label">Cluster</label>
                             <input type="text" class="form-control" id="StarClusterName" required v-model="editStar.Cluster" :value="currentCluster.name">
-                           <!-- <select class="form-select" aria-label="Default select example" v-model="editStar.Cluster">
+                           &lt;!&ndash; <select class="form-select" aria-label="Default select example" v-model="editStar.Cluster">
                                 <option selected disabled>Cluster Name</option>
                                 <option v-for="cluster in CLusterList" :value="cluster.name">{{cluster.name}}</option>
 
-                            </select>-->
+                            </select>&ndash;&gt;
                         </div>
                     </div>
 
@@ -162,7 +162,7 @@
 
         </form>
     </div>
-    <!-- Modal -->
+    &lt;!&ndash; Modal &ndash;&gt;
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -183,17 +183,159 @@
     </div>
 
     <footer>
-    </footer>
+    </footer>-->
+
+    <q-layout view="hHh lpR fFf">
+
+        <l-nav-list :pages="pages"></l-nav-list>
+
+        <q-drawer v-model="rightDrawerOpen" side="right" overlay elevated>
+            <!-- drawer content -->
+        </q-drawer>
+
+        <q-page-container>
+            <div class="row justify-center ">
+                <div class="col-6 text-center text-h3 q-pa-lg">
+                    Edit Star
+                </div>
+            </div>
+
+            <div class="row justify-content-start ">
+                <div class="col-6 text-center text-h3 q-pa-lg">
+                    <q-btn  padding="lg xl" flat  @click="confirm = true">
+                        <q-icon>
+                            <i class="fa-solid fa-trash"></i>
+                        </q-icon>
+                    </q-btn>
+                </div>
+            </div>
+
+
+            <div class=" row justify-center" style="max-width:400px;max-height: 1000px ">
+                <q-form
+                        @submit="editCurrentStar"
+                        @reset="onReset"
+                        class="q-gutter-xl"
+                >
+
+                    <div class="q-pa-md">
+                        <div class="q-col-gutter-md row justify-center">
+                            <div class="col-6">
+                                <q-img v-model="editStar.photo" src="https://cdn.quasar.dev/img/parallax2.jpg" :ratio="4/3">
+
+                                </q-img>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <q-input
+                            filled
+                            v-model="editStar.photo"
+                            label="Star img"
+                            lazy-rules
+                            bg-color="white"
+                            :rules="[ val => val && val.length > 0 || 'Please type something']"
+
+                    ></q-input>
+
+                    <q-input
+                            filled
+                            v-model="editStar.name"
+                            label="Star Name"
+                            lazy-rules
+                            bg-color="white"
+                            :rules="[ val => val && val.length > 0 || 'Please type something']"
+
+                    ></q-input>
+                    <q-input
+                            filled
+                            v-model="editStar.cluster"
+                            label="Cluster"
+                            lazy-rules
+                            disabled
+                            bg-color="white"
+                    >
+                    </q-input>
+
+                    <q-select standout v-model="editStar.classi" :options="currentCluster.classifications" label="Classifications"  bg-color="white"></q-select>
+
+
+                    <q-input
+                            filled
+                            type="number"
+                            v-model="editStar.qty"
+                            label="Qty"
+                            lazy-rules
+                            bg-color="white"
+                            :rules="[
+            val => val !== null && val !== '' || 'Please type your age',
+            val => val > 0 && val < 100 || 'Please type a real age'
+          ]"
+                    ></q-input>
+                    <q-input
+                            v-model="editStar.notes"
+                            filled
+                            label="Notes"
+                            type="textarea"
+                            bg-color="white"
+                    ></q-input>
+
+
+                    <q-toggle v-model="editStar.Trade" label="Trade" ></q-toggle>
+
+
+
+                    <q-btn label="Submit" type="submit" color="primary"></q-btn>
+                    <q-btn label="Cancel" href="Cluster.html" color="primary"  class="q-ml-lg"></q-btn>
+
+
+
+
+
+
+
+
+
+                </q-form>
+            </div>
+            <!-- modal -->
+            <q-dialog v-model="confirm" persistent>
+                <q-card  style="width: 700px; max-width: 80vw;">
+                    <q-card-section class="row items-center">
+
+                        <div class="text-h6">Delete {{currentStar.name}}?</div>
+                    </q-card-section>
+
+                    <q-card-section class="q-pt-none">
+
+                        Once deleted a Star cannot be recovered are you sure you want to delete this Star.
+                    </q-card-section>
+
+                    <q-card-actions align="right">
+                        <div class="q-gutter-xl">
+                            <q-btn flat label="Delete" color="primary" v-close-popup @click="deleteStar(currentStar)"></q-btn>
+                        </div>
+                        <div class="q-gutter-xl">
+                            <q-btn flat label="Cancel" color="primary" v-close-popup ></q-btn>
+                        </div>
+                    </q-card-actions>
+                </q-card>
+            </q-dialog>
+
+        </q-page-container>
+
+
+    </q-layout>
 </div>
 
-<!--<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.umd.prod.js"></script>
-<script src="Cluster-models.js"></script>
-<script src="Main.js"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="Cluster-models.js "></script>
 <script src="Cluster.js"></script>
 <script src="l-nav-list.js"></script>
+<script src="l-nav-item.js"></script>
 <script src="l-nav-item.js"></script>
 <script>
     // start the app after all the other JS has been loaded

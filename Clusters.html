@@ -24,37 +24,6 @@
         <q-drawer v-model="rightDrawerOpen" side="right" overlay elevated>
             <!-- drawer content -->
         </q-drawer>
-<!--    <div class="row q-col-gutter-lg self-center">
-        <div class="col-4">
-            <div class=" q-px-lg">
-            <div class="text-center">
-                <h1 class="display-5 mt-5 fw-bold">Clusters</h1>
-            </div>
-        </div>
-    </div>
-&lt;!&ndash;    <div class="row q-col-gutter-lg self-center">
-        <div class="col-8">
-            <div class=" q-px-lg">
-                <q-btn flat color="primary"  href="NewCluster.html">
-                    <q-icon left size="1em">
-                        <i class="fa-solid fa-circle-plus fa-2x" ></i> </q-icon>
-                    New Cluster
-                </q-btn>
-            </div>
-        </div>
-    </div>&ndash;&gt;
-&lt;!&ndash;    <div class="container">
-        <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 p-3 g-2 g-lg-3" >
-
-<cluster-list :list="CLusterList"></cluster-list>
-
-        </div>
-
-
-    </div>&ndash;&gt;
-
-
-</div>-->
 
         <q-page-container>
 
@@ -78,7 +47,7 @@
             </div>
             <div class="row q-col-gutter-lg self-center justify-center">
                 <div class="col-8">
-                    <cluster-list :list="CLusterList"></cluster-list>
+                    <cluster-list :list="Clustcollection.getItems()"></cluster-list>
                 </div>
             </div>
         </q-page-container>

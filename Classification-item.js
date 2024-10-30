@@ -42,6 +42,14 @@ Cluster.component('classificationItem', {
         <q-item-section>
           <q-item-label>{{clas.name}}</q-item-label>
         </q-item-section>
+        <!--
+            <q-item-section top side>
+                                <div class="text-grey-8 q-gutter-xs">
+                                    <q-btn class="gt-xs" size="12px" flat dense round icon="delete" @click="$emit('delclas',clas)"></q-btn>
+                                    <q-btn class="gt-xs" size="12px" flat dense round icon="done" ></q-btn>
+                                    <q-btn size="12px" flat dense round icon="more_vert"></q-btn>
+                                </div>
+            </q-item-section>-->
       </q-item>
     `,
 });

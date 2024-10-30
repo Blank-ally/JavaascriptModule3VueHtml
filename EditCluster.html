@@ -13,101 +13,15 @@
     <title>Cluster</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="app.min.css">
+    <link rel="stylesheet" href="main.css">
 
 </head>
 <body>
 <div id="Cluster">
-    <header>
-
-        <l-nav-list :pages="pages"></l-nav-list>
-    </header>
-    <div class="container">
-
-        <div class="row">
-            <div class="py-5">
-                <div class="text-center">
-                    <h1 class="display-5 mt-5 fw-bold">Edit {{currentCluster.name}}</h1>
-
-                </div>
-            </div>
-        </div>
-        <form class="row g-3 needs-validation" novalidate @submit.prevent="editCurrentCluster">
-
-            <div class="col-md-4 position-relative">
-                <label for="ClusterName" class="form-label">Cluster Name</label>
-                <input type="text" class="form-control" id="ClusterName"  v-model="editCluster.name"  required >
-            </div>
-
-            <!-- figure out a way to marry these two tabs examples i found on code pen-->
-<div class="row p-2">
-    <label>New Classification</label>
-            <div class="col-4">
-
-                <input class="form-control me-2" type="text" v-model="classification.name" >
-            </div>
-            <div class="col-3">
-                <button class="btn btn-success" type="button" @click="addEditClassification(classification.name)">Add</button>
-            </div>
-
-</div>
-            <classification-list :list="editCluster.classifications" ></classification-list>
-            <div class="row ms-4">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="PublicflexSwitchCheckDefault" v-model="editCluster.public">
-                <label class="form-check-label" for="PublicflexSwitchCheckDefault">Public</label>
-            </div>
-            </div>
-
-            <div class="row ms-4">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="FavoriteflexSwitchCheckDefault" v-model="editCluster.favorite">
-                <label class="form-check-label" for="FavoriteflexSwitchCheckDefault">Favorite</label>
-            </div>
-            </div>
-            <div class="col-4 p-4" >
-                <label>Type</label>
-                <select class="form-select" aria-label="Default select example" v-model="editCluster.type">
-
-                    <option v-for="type in clusterTypes" :value="type.name">{{type.name}}</option> <!-- make it defualt to current cluster-->
-
-                </select>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="col-3 col-md-2 p-2">
-                    <button class="btn btn-success" type="submit">Save</button>
-                </div>
-                <div class="col-3 col-md-2 p-2">
-                    <a class="btn btn-danger" role="button" aria-disabled="true" href="Cluster.html">Cancel</a>
-                </div>
-            </div>
-
-        </form>
-    </div>
-    <footer>
-
-
-    </footer>
-
 
     <q-layout view="hHh lpR fFf">
 
-        <q-header elevated >
-            <q-toolbar>
-                <q-toolbar-title>
-                    <q-btn flat  href="Clusters.html">
-                        <q-icon right size="2em">
-                            <i class="fa-solid fa-meteor grad"></i>
-                        </q-icon>
-                        Cluster
-                    </q-btn>
-
-                </q-toolbar-title>
-
-                <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
-            </q-toolbar>
-        </q-header>
+        <l-nav-list :pages="pages"></l-nav-list>
 
         <q-drawer v-model="rightDrawerOpen" side="right" overlay elevated>
             <!-- drawer content -->
@@ -118,18 +32,18 @@
 
             <div class="row justify-center ">
                 <div class="col-6 text-center text-h3 q-pa-lg">
-                    New Cluster
+                    Edit Cluster
                 </div>
             </div>
 
-            <div class="q-pa-xl" style="max-width:400px;max-height: 1000px ">
-
+            <div class="q-pa-xl row justify-center ">
+<div class="col-6">
                 <q-form
                         @submit.prevent="editCurrentCluster"
                         @reset="onReset"
-                        class="q-gutter-xl"
+                        class="q-gutter-md"
                 >
-                    <div>
+
                         <q-input
                                 filled
                                 v-model="editCluster.name"
@@ -137,50 +51,32 @@
                                 lazy-rules
                                 bg-color="white"
                                 :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        ></q-input>
 
-                        />
-
-                    </div>
-                    <div>
 
                         <q-input  filled
                                   label="New Classification"
                                   v-model="classification.name"
                                   lazy-rules
                                   bg-color="white">
-                            <q-btn round dense flat icon="add"@click="addEditClassification(classification.name)" />
+                            <q-btn round dense flat icon="add"@click="addEditClassification(classification.name)" ></q-btn>
                         </q-input>
-                    </div>
+
 
                     <classification-list :list="editCluster.classifications"></classification-list>
 
-                    <div>
-                        <q-toggle v-model="editCluster.public" label="Public" />
-                    </div>
-                    <div>
-                        <q-toggle v-model="editCluster.favorite" label="Favorite" />
-                    </div>
 
-                    <div>
-                        <q-select standout v-model="editCluster.type" :options="clusterTypes" label="Collection Type"  bg-color="white"/>
-                    </div>
+                        <q-toggle v-model="editCluster.public" label="Public"></q-toggle>
 
+                        <q-toggle v-model="editCluster.favorite" label="Favorite"></q-toggle>
 
-                    <div>
-                        <q-btn label="Submit" type="submit" color="primary"/>
+                        <q-select standout v-model="editCluster.type" :options="clusterTypes" label="Collection Type"  bg-color="white"></q-select>
+                        <q-btn label="Submit" type="submit" color="primary"></q-btn>
 
-                    </div>
-                    <div>
-                        <q-btn label="Reset" type="" color="primary" flat class="q-ml-lg" />
-                    </div>
-
-
-
-
-
+                        <q-btn label="Reset" type=""  color="primary"  class="q-ml-lg"></q-btn>
 
                 </q-form>
-
+            </div>
             </div>
 
 
@@ -193,15 +89,14 @@
 
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.1/dist/quasar.umd.prod.js"></script>
 <script src="Cluster-models.js "></script>
-<script src="Main.js"></script>
-<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="Cluster.js"></script>
 <script src="l-nav-list.js"></script>
-<script src="Classification-List.js"></script><script src="l-nav-list.js"></script>
-<script src="Classification-item.js"></script><script src="l-nav-list.js"></script>
+<script src="l-nav-item.js"></script>
+<script src="Classification-List.js"></script>
+<script src="Classification-item.js"></script>
 
 
 <script>

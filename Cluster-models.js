@@ -1,7 +1,24 @@
-function Clust (name,description,public, favorite, classifications, type, Stars,  complete){
+function ClusterCollection(){
+    this._arr = [];
+
+    this.addItem = function(clust){
+        this._arr.push(new ClusterItem(clust));
+
+        return this
+    }
+
+    this.getItems = function(){
+        return this._arr;
+    }
+}
+function ClusterItem(clust){
+
+    return clust;
+}
+function Clust (name,description,isPublic, favorite, classifications, type, Stars,  complete){
     this.name = name ?? '';
     this.description = description ?? '';
-    this.public = public ?? false;
+    this.isPublic = isPublic ?? false;
     this.favorite = favorite ?? false;
     this.classifications = classifications ?? [];
     this.type = type ?? '';
@@ -34,6 +51,36 @@ function Star (name,photo,cluster, classi, qty, notes, trade ){
 
 function Classification (name){
     this.name = name ?? '';
+}
+function ClassificationCollection(clas){
+    this._arr = [];
+
+    this.addItem = function(clas){
+        this._arr.push(new ClusterItem(clas));
+        return this
+    }
+
+    this.getItems = function(){
+        return this._arr;
+    }
+}
+
+function StarCollection(star){
+    this._arr = [];
+
+    this.addItem = function(star){
+        this._arr.push(new ClusterItem(star));
+        return this;
+    }
+
+    this.getItems = function(){
+        return {...this._arr};
+    }
+}
+
+function StarItem(clust){
+
+    return clust;
 }
 /*
 cluster
