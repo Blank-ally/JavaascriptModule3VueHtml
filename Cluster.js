@@ -8,12 +8,21 @@ const Cluster = Vue.createApp({
             newCluster: new Clust(),
             editCluster:new Clust (),
             classification:new Classification(),
- /*           CLusterList: [
-                new Clust('MilkyWay', 'testing something real quick ' ,true,true,[ "Rare", "common","supernova"], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
+            CLusterList: [
+                new Clust('MilkyWay', 'testing something real quick ' ,true,true,
+                    new ClusterCollection()
+                        .addItem(new ClassificationItem('Rare'))
+                        .addItem(new ClassificationItem('Common'))
+                        .addItem(new ClassificationItem('special'))
+                    , 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
                         {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                         {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                         {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
-                    new Clust('MilkyWay', 'testing something real quick ' ,true,true,[ "Rare", "common",  "supernova" ], 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
+                    new Clust('MilkyWay', 'testing something real quick ' ,true,true,
+                        new ClusterCollection()
+                        .addItem(new ClassificationItem(new Classification('Rare')))
+                        .addItem(new ClassificationItem('Common'))
+                        .addItem(new ClassificationItem('special')), 'cards',[{name:'Absolutno',photo: "pexels-pixabay-41951.jpg",classi:'common',notes:"lorem ipsum"},
                     {name:'star2',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
@@ -28,13 +37,13 @@ const Cluster = Vue.createApp({
                     {name:'star3',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" },
                     {name:'star4',photo: "pexels-pixabay-41951.jpg",Classi:'common',notes:"lorem ipsum" }],false ),
 
-            ],*/
-
+            ],
+/*
             Clustcollection: new ClusterCollection()
-                .addItem(new ClusterItem(new Clust('MilkyWay', 'testing something real quick ' ,true,true,["Rare","common"],'cards',[ Star('testing','https://www.pexels.com/video/putting-kiwi-slices-in-blender-5935123/','MilkyWay','',6,"stuff",false)])))
-                .addItem(new ClusterItem(new Clust('MilkyWay', 'testing something real quick ' ,true,true,["Rare","common"],'cards',[ Star('testing','https://www.pexels.com/video/putting-kiwi-slices-in-blender-5935123/','MilkyWay','',6,"stuff",false)])))
-                .addItem(new ClusterItem(new Clust('MilkyWay', 'testing something real quick ' ,true,true,["Rare","common"],'cards',[ Star('testing','https://www.pexels.com/video/putting-kiwi-slices-in-blender-5935123/','MilkyWay','',6,"stuff",false)])))
-                .addItem(new ClusterItem(new Clust('MilkyWay', 'testing something real quick ' ,true,true,["Rare","common"],'cards',[ Star('testing','https://www.pexels.com/video/putting-kiwi-slices-in-blender-5935123/','MilkyWay','',6,"stuff",false)]))),
+                .addItem(new ClusterItem(new Clust('MilkyWay', 'testing something real quick ' ,true,true, new ClassificationCollection().addItem("Rare").addItem("common"),'cards',new StarCollection().addItem(new Star('testing','https://www.pexels.com/video/putting-kiwi-slices-in-blender-5935123/','MilkyWay','',6,"stuff",false)))))
+                .addItem(new ClusterItem(new Clust('MilkyWay', 'testing something real quick ' ,true,true, new ClassificationCollection().addItem("Rare").addItem("common"),'cards',new StarCollection().addItem(new Star('testing','https://www.pexels.com/video/putting-kiwi-slices-in-blender-5935123/','MilkyWay','',6,"stuff",false)))))
+                .addItem(new ClusterItem(new Clust('MilkyWay', 'testing something real quick ' ,true,true, new ClassificationCollection().addItem("Rare").addItem("common"),'cards',new StarCollection().addItem(new Star('testing','https://www.pexels.com/video/putting-kiwi-slices-in-blender-5935123/','MilkyWay','',6,"stuff",false)))))
+                .addItem(new ClusterItem(new Clust('MilkyWay', 'testing something real quick ' ,true,true, new ClassificationCollection().addItem("Rare").addItem("common"),'cards',new StarCollection().addItem(new Star('testing','https://www.pexels.com/video/putting-kiwi-slices-in-blender-5935123/','MilkyWay','',6,"stuff",false))))),*/
             currentCluster:{
                 type: Clust,
                 required: true
@@ -63,13 +72,11 @@ const Cluster = Vue.createApp({
 
         addNewStar() {
             debugger;
+            clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
             //clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
-            clus =  this.Clustcollection.getItems.find( e => e.name === this.currentCluster.name)
-            //ind = this.CLusterList.indexOf(clus)
-            ind = this.Clustcollection.getItems.indexOf(clus)
+            ind = this.CLusterList.indexOf(clus)
             this.currentCluster.Stars.push(this.NewStar)
-           // this.CLusterList[ind] = this.currentCluster
-            this.Clustcollection.getItems[ind] = this.currentCluster
+            this.CLusterList[ind] = this.currentCluster
             // clear the form
   //todo: refactor to accept multiple aruguments for cluster
             this.NewStar = new Star()
@@ -77,9 +84,9 @@ const Cluster = Vue.createApp({
         },
         addNewCluster() {
             debugger
-           // this.CLusterList.push(this.newCluster);
+           this.CLusterList.push(this.newCluster);
             // clear the form
-            this.Clustcollection.addItem(new ClusterItem(this.newCluster))
+          //  this.Clustcollection.addItem(new ClusterItem(this.newCluster))
             this.currentCluster = this.newCluster
 
             this.newCluster = new Clust()
@@ -106,8 +113,7 @@ const Cluster = Vue.createApp({
         },
         deleteCluster(item) {
             // TODO: confirm with user first!
-            this.Clustcollection.getItems().splice(this.Clustcollection.getItems().indexOf(item),1)
-          //  this.CLusterList.splice(this.CLusterList.indexOf(item), 1);
+            this.CLusterList.splice(this.CLusterList.indexOf(item), 1);
             window.location.href = 'Clusters.html'
 
 
@@ -115,15 +121,9 @@ const Cluster = Vue.createApp({
         deleteStar(item){
             debugger
             // TODO: confirm with user first!
-           // clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
-            //ind = this.CLusterList.indexOf(clus)
-
-            //clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
-            clus =  this.Clustcollection.getItems.find( e => e.name === this.currentCluster.name)
-            //ind = this.CLusterList.indexOf(clus)
-            ind = this.Clustcollection.getItems.indexOf(clus)
-           // this.CLusterList[ind].Stars.splice(this.currentCluster.Stars.indexOf(item), 1);
-            this.Clustcollection.getItems().splice(this.currentCluster.Stars.indexOf(item),1)
+            clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
+            ind = this.CLusterList.indexOf(clus)
+            this.CLusterList[ind].Stars.splice(this.currentCluster.Stars.indexOf(item), 1);
             this.currentCluster =  this.CLusterList[ind]
             window.location.href = 'Cluster.html'
 
@@ -138,22 +138,21 @@ const Cluster = Vue.createApp({
 
             debugger
 
-           // clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
-          //  ind = this.CLusterList.indexOf(clus)
+            clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
+            ind = this.CLusterList.indexOf(clus)
 
-            clus =  this.Clustcollection.getItems.find( e => e.name === this.currentCluster.name)
-            ind = this.Clustcollection.getItems.indexOf(clus)
-            this.Clustcollection.getItems()[ind].name = this.editCluster.name
-            this.Clustcollection.getItems()[ind].public = this.editCluster.public
-            this.Clustcollection.getItems()[ind].favorite = this.editCluster.favorite
-            this.Clustcollection.getItems()[ind].purchased = this.editCluster.purchased
-            this.Clustcollection.getItems()[ind].Complete = this.editCluster.Complete
-            this.Clustcollection.getItems()[ind].classifications = this.editCluster.classifications
-            this.Clustcollection.getItems()[ind].type = this.editCluster.type
-            this.Clustcollection.getItems()[ind].Stars.forEach(s => s.Cluster = this.editCluster.name)
+            this.CLusterList[ind].name = this.editCluster.name
+            this.CLusterList[ind].public = this.editCluster.public
+            this.CLusterList[ind].favorite = this.editCluster.favorite
+            this.CLusterList[ind].purchased = this.editCluster.purchased
+            this.CLusterList[ind].Complete = this.editCluster.Complete
+            this.CLusterList[ind].classifications = this.editCluster.classifications
+            this.CLusterList[ind].type = this.editCluster.type
+
+            this.CLusterList[ind].Stars.forEach(s => s.Cluster = this.editCluster.name)
 
             //this.CLusterList[this.CLusterList.indexOf(this.currentCluster )].Cluster = item
-            this.currentCluster =  this.Clustcollection.getItems()[ind]
+            this.currentCluster =  this.CLusterList[ind]
             window.location.href = 'Cluster.html';
 
         },
@@ -176,18 +175,17 @@ const Cluster = Vue.createApp({
         editCurrentStar(item){
             debugger
             // TODO: confirm with user first!
-            clus =  this.Clustcollection.getItems().find( e=> e.name === this.currentCluster.name)
-            ind = this.Clustcollection.getItems().indexOf(clus)
-
-            star = this.Clustcollection.getItems()[ind].Stars.find(e => e.name === this.currentStar.name)
-            sind = this.Clustcollection.getItems()[ind].Stars.indexOf(star)
-            this.Clustcollection.getItems()[ind].Stars[sind].name = this.editStar.name
-            this.Clustcollection.getItems()[ind].Stars[sind].photo = this.editStar.photo
-            this.Clustcollection.getItems()[ind].Stars[sind].qty = this.editStar.qty
-            this.Clustcollection.getItems()[ind].Stars[sind].Classi = this.editStar.Classi
-            this.Clustcollection.getItems()[ind].Stars[sind].notes = this.editStar.notes
-            this.Clustcollection.getItems()[ind].Stars[sind].Trade = this.editStar.Trade
-            this.Clustcollection.getItems()[ind].Stars[sind].Cluster = this.editStar.Cluster
+            clus =  this.CLusterList.find( e=> e.name === this.currentCluster.name)
+            ind = this.CLusterList.indexOf(clus)
+            star = this.CLusterList[ind].Stars.find(e => e.name === this.currentStar.name)
+            sind = this.CLusterList[ind].Stars.indexOf(star)
+            this.CLusterList[ind].Stars[sind].name = this.editStar.name
+            this.CLusterList[ind].Stars[sind].photo = this.editStar.photo
+            this.CLusterList[ind].Stars[sind].qty = this.editStar.qty
+            this.CLusterList[ind].Stars[sind].Classi = this.editStar.Classi
+            this.CLusterList[ind].Stars[sind].notes = this.editStar.notes
+            this.CLusterList[ind].Stars[sind].Trade = this.editStar.Trade
+            this.CLusterList[ind].Stars[sind].Cluster = this.editStar.Cluster
 
 
 

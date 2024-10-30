@@ -64,6 +64,10 @@ function ClassificationCollection(clas){
         return this._arr;
     }
 }
+function ClassificationItem(clas){
+
+    return clas;
+}
 
 function StarCollection(star){
     this._arr = [];
